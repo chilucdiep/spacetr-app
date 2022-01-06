@@ -1,0 +1,33 @@
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    .Logo {
+      max-width: 180px;
+    }
+    
+    a {
+      cursor: pointer;
+    }
+  
+    ul {
+      display: flex;
+  
+      li {
+        margin-right: 4em;
+        transition: all .1s ease-in-out;
+  
+        &:hover {
+          opacity: .7;
+        }
+      }
+  
+      li:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  
+  
