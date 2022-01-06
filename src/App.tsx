@@ -4,6 +4,7 @@ import styles from "./App.module.scss";
 
 import Navbar from "./components/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
+import FeedPage from "./components/FeedPage/FeedPage";
 
 function App() {
   const APOD_URL = "https://api.nasa.gov/planetary/apod";
@@ -37,6 +38,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage pictures={pictures} />} />
+          <Route path="/feed" element={<FeedPage pictures={pictures} />} />
         </Routes>
       </div>
     </BrowserRouter>
