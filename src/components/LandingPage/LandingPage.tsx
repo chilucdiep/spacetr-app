@@ -1,5 +1,7 @@
 import styles from "./LandingPage.module.scss";
 
+import Button from "../Button/Button";
+
 const LandingPage = ({ pictures }: any) => {
   return (
     <div className={styles.LandingPage}>
@@ -10,7 +12,9 @@ const LandingPage = ({ pictures }: any) => {
         <h2>
           with <strong>NASA's</strong> beautiful imagery
         </h2>
-        <button>Explore</button>
+        <div className={styles.Button}>
+          <Button label="Explore" />
+        </div>
       </div>
       <div className={styles.Bottom}>
         <div className={styles.Overlay}></div>

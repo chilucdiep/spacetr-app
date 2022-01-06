@@ -1,0 +1,21 @@
+.Button {
+  border: none;
+  border-radius: 8px;
+  padding: 0 2.2em;
+  height: 40px;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  font-weight: 500;
+  font-size: 1rem;
+  width: fit-content;
+  transition: all 0.2s ease;
+  background-color: #357cf2;
+
+  &:hover {
+    cursor: pointer;
+    opacity: .8;
+  }
+}
