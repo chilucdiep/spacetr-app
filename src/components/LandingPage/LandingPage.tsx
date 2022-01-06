@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./LandingPage.module.scss";
 
 import Button from "../Button/Button";
@@ -12,9 +13,9 @@ const LandingPage = ({ pictures }: any) => {
         <h2>
           with <strong>NASA's</strong> beautiful imagery
         </h2>
-        <div className={styles.Button}>
+        <Link to='/feed' className={styles.Button}>
           <Button label="Explore" />
-        </div>
+        </Link>
       </div>
       <div className={styles.Bottom}>
         <div className={styles.Overlay}></div>
