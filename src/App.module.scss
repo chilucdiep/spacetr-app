@@ -75,10 +75,10 @@ ul {
 
   .Container {
     max-width: 1300px;
-    padding: 0.6em 1.5em 0;
+    padding: 0 1.5em 0;
     margin: auto;
   
     @media screen and (min-width: 1050px) {
-      padding: 0.8em 8em;
+      padding: 0 8em;
     }
   }

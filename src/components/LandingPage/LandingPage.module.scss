@@ -1,6 +1,6 @@
 .LandingPage {
   text-align: center;
-  height: 88vh;
+  height: 91vh;
   overflow-y: hidden;
 
   .Header {
@@ -16,15 +16,17 @@
     }
 
     .Button {
-        position: absolute;
-        bottom: -5px;
-        width: 150px;
+      position: absolute;
+      bottom: -5px;
+      width: 150px;
     }
   }
 
   .Bottom {
-    height: 50vh;
+    height: 51vh;
     width: 100%;
+    overflow-y: hidden;
+    position: relative;
 
     .Overlay {
       position: absolute;
@@ -32,7 +34,7 @@
       background: linear-gradient(
         0deg,
         #000000 0%,
-        rgba(0, 0, 0, 0.9) 21.88%,
+        rgba(0, 0, 0, 0.9) 30%,
         rgba(0, 0, 0, 0) 100%
       );
       height: 120px;
@@ -41,15 +43,29 @@
     }
 
     .Images {
-      display: flex;
-      justify-content: space-between;
       position: relative;
+      overflow-y: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-gap: 1em;
+
+      @media screen and (max-width: 700px) {
+        grid-template-columns: 1fr 1fr 1fr;
+
+        img {
+          &:nth-child(4n + 1) {
+            display: none;
+          }
+        }
+      }
 
       img {
-        width: 220px;
-        height: 49vh;
+        // max-width: 220px;
+        min-width: none;
+        height: 55vh;
         object-fit: cover;
         border-radius: 8px;
+        // margin-right: 1em;
 
         &:nth-child(2n + 2) {
           margin-top: 5em;
