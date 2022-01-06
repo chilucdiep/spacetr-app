@@ -13,7 +13,7 @@ function App() {
   const [loaded, setLoaded] = useState<boolean>(false);
 
   const getPicturesRequest = useCallback (async () => {
-    const url = `${APOD_URL}?api_key=${API_KEY}&count=9`;
+    const url = `${APOD_URL}?api_key=${API_KEY}&count=5`;
     const response = await fetch(url);
     const responseJson = await response.json();
 
@@ -23,7 +23,7 @@ function App() {
     } else {
       console.log('error');
     }
-  }, [loaded]);
+  }, []);
 
   useEffect(() => {
     getPicturesRequest();
