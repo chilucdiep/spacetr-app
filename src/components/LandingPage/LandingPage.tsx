@@ -10,6 +10,7 @@ const LandingPage = ({ pictures }: any) => {
         <h2>
           with <strong>NASA's</strong> beautiful imagery
         </h2>
+        <button>Explore</button>
       </div>
       <div className={styles.Bottom}>
         <div className={styles.Overlay}></div>

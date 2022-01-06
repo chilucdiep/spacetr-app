@@ -8,9 +8,17 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    position: relative;
 
     span {
       color: #357cf2;
+    }
+
+    button {
+        position: absolute;
+        bottom: -5px;
+        width: 150px;
     }
   }
 
