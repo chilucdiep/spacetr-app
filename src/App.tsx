@@ -40,7 +40,10 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage pictures={pictures} />} />
           <Route path="/feed" element={<FeedPage pictures={pictures} />} />
-          <Route path="/feed/:id" element={<PictureDetail />} />
+          <Route
+            path="/feed/:id"
+            element={<PictureDetail pictures={pictures} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>

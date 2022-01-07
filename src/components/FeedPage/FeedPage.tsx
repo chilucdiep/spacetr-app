@@ -9,6 +9,13 @@ import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const FeedPage = ({ pictures }: any) => {
+
+    pictures.map((picture: any) => {
+
+          return console.log(`ok/feed/${picture.title.trim()}`);
+        
+      });
+
   return (
     <div className={styles.FeedPage}>
       <div className={styles.Liked}>
