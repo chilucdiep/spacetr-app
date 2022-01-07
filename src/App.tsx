@@ -5,6 +5,7 @@ import styles from "./App.module.scss";
 import Navbar from "./components/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import FeedPage from "./components/FeedPage/FeedPage";
+import PictureDetail from "./components/PictureDetail/PictureDetail";
 
 function App() {
   const APOD_URL = "https://api.nasa.gov/planetary/apod";
@@ -13,16 +14,16 @@ function App() {
   const [pictures, setPictures] = useState<any[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
 
-  const getPicturesRequest = useCallback (async () => {
+  const getPicturesRequest = useCallback(async () => {
     const url = `${APOD_URL}?api_key=${API_KEY}&count=5`;
     const response = await fetch(url);
     const responseJson = await response.json();
 
     if (responseJson) {
-      setPictures(pictures => [...pictures, ...responseJson]);
-      setLoaded(!loaded);
+      setPictures((pictures) => [...pictures, ...responseJson]);
+      setLoaded(true);
     } else {
-      console.log('error');
+      console.log("error");
     }
   }, []);
 
@@ -39,6 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage pictures={pictures} />} />
           <Route path="/feed" element={<FeedPage pictures={pictures} />} />
+          <Route path="/feed/:id" element={<PictureDetail />} />
         </Routes>
       </div>
     </BrowserRouter>

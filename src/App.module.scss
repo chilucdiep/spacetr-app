@@ -20,6 +20,11 @@ ul {
     color: white;
     font-size: 0.875rem;
     font-weight: 300;
+
+    @media screen and (max-width: 700px) {
+      font-size: 0.7rem;
+
+    }
   }
 
   img {

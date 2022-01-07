@@ -12,6 +12,11 @@ const Navbar = () => {
       <div className={styles.NavLinks}>
         <ul>
           <li>
+            <Link to="/feed">
+              <a>Feed</a>
+            </Link>
+          </li>
+          <li>
             <a
               href="https://github.com/chilucdiep/Spacestagram"
               target="_blank"
