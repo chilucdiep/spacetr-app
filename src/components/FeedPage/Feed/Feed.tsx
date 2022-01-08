@@ -39,7 +39,7 @@ const Feed = ({ pictures }: any) => {
           >
             <div className={styles.LinkOverlay}></div>
             <h2>Read more</h2>
-            <img src={picture.url} alt="Nasa Space Imagery"></img>
+            <img src={picture.hdurl} alt="Nasa Space Imagery"></img>
           </Link>
         </div>
       ))}

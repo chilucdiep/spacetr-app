@@ -39,7 +39,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className={styles.Container}>
-        <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage pictures={pictures} />} />
           <Route path="/feed" element={<FeedPage pictures={pictures} />} />

@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 
-import Logo from "../../images/Logo.svg";
+import LogoDark from "../../images/LogoDark.svg";
+import LogoLight from "../../images/LogoLight.svg";
 
-const Navbar = () => {
+const Navbar = ({ lightTheme }: any) => {
+  const logoMarkup = lightTheme ? (
+    <img src={LogoLight} alt="Logo" className={styles.Logo}></img>
+  ) : (
+    <img src={LogoDark} alt="Logo" className={styles.Logo}></img>
+  );
+
   return (
     <div className={styles.Navbar}>
       <Link to="/">
-        <img src={Logo} alt="Logo" className={styles.Logo}></img>
+        {logoMarkup}
       </Link>
       <div className={styles.NavLinks}>
         <ul>

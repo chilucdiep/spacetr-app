@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "./PictureDetail.module.scss";
 
+import Navbar from "../Navbar/Navbar";
 interface Picture {
   hdurl: string;
   title: string;
@@ -51,12 +52,15 @@ const PictureDetail = ({
   console.log(picture);
 
   return (
-    <div className={styles.PictureDetail}>
-      <img src={picture.hdurl} alt="Nasa Imagery"></img>
-      <h1>{picture.title}</h1>
-      <p>{picture.date}</p>
-      <p>{picture.explanation}</p>
-    </div>
+    <>
+      <Navbar lightTheme={lightTheme} />
+      <div className={styles.PictureDetail}>
+        <img src={picture.hdurl} alt="Nasa Imagery"></img>
+        <h1>{picture.title}</h1>
+        <p>{picture.date}</p>
+        <p>{picture.explanation}</p>
+      </div>
+    </>
   );
 };
 
