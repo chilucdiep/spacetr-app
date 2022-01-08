@@ -17,10 +17,7 @@ function App() {
     "--background-color",
     lightTheme ? "white" : "#050505"
   );
-  root.style.setProperty(
-    "--text-color",
-    lightTheme ? "black" : "white"
-  );
+  root.style.setProperty("--text-color", lightTheme ? "black" : "white");
 
   const APOD_URL = "https://api.nasa.gov/planetary/apod";
   const API_KEY = "9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA";
@@ -73,6 +70,7 @@ function App() {
               />
             }
           />
+          <Route path="*" element={<div>404 Page Not Found</div>} />
         </Routes>
       </div>
     </BrowserRouter>
