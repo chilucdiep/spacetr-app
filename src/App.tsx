@@ -5,6 +5,7 @@ import styles from "./App.module.scss";
 import LandingPage from "./components/LandingPage/LandingPage";
 import FeedPage from "./components/FeedPage/FeedPage";
 import PictureDetailsPage from "./components/PictureDetailsPage/PictureDetailsPage";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);
@@ -47,6 +48,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Navbar lightTheme={lightTheme} />
       <div className={styles.Container}>
         <Routes>
           <Route
