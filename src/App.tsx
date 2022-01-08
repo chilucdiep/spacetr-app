@@ -8,11 +8,14 @@ import FeedPage from "./components/FeedPage/FeedPage";
 import PictureDetail from "./components/PictureDetail/PictureDetail";
 
 function App() {
+  const [lightTheme, setLightTheme] = useState<boolean>(false);
+  const [pictures, setPictures] = useState<any[]>([]);
+  const [loaded, setLoaded] = useState<boolean>(false);
+
   const APOD_URL = "https://api.nasa.gov/planetary/apod";
   const API_KEY = "6A0tZQBiVWL7Tgahg0FxdeTB6DSUf6cMcy5QxMRy";
 
-  const [pictures, setPictures] = useState<any[]>([]);
-  const [loaded, setLoaded] = useState<boolean>(false);
+  // const {pictures, loading, fetchMore} = usePictures();
 
   const getPicturesRequest = useCallback(async () => {
     const url = `${APOD_URL}?api_key=${API_KEY}&count=5`;
@@ -42,7 +45,15 @@ function App() {
           <Route path="/feed" element={<FeedPage pictures={pictures} />} />
           <Route
             path="/feed/:id"
-            element={<PictureDetail pictures={pictures} />}
+            element={
+              <PictureDetail
+                pictures={pictures}
+                lightTheme={lightTheme}
+                setLightTheme={setLightTheme}
+                APOD_URL={APOD_URL}
+                API_KEY={API_KEY}
+              />
+            }
           />
         </Routes>
       </div>
