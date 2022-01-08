@@ -17,7 +17,7 @@ const FeedPage = ({ pictures, setLightTheme }: any) => {
     <>
       <Navbar />
       <div className={styles.FeedPage}>
-        <Liked />
+        <Liked likedPictures={likedPictures} />
         <Feed
           pictures={pictures}
           onLikeClick={handleAddLikedPictures}
