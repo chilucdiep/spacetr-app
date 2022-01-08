@@ -1,3 +1,16 @@
+.BackButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: .6;
+  width: 65px;
+  margin-top: 3em;
+  transition: all .2s ease-in;
+
+  &:hover {
+    opacity: 1;
+  }
+}
 .PictureDetailsPage {
   display: flex;
   justify-content: center;
@@ -5,7 +18,7 @@
   .PictureDetailsContainer {
     display: flex;
     max-width: 950px;
-    margin: 5em 0;
+    margin: 2em 0;
     width: 90%;
     box-shadow: 0px 10px 30px 15px rgba(0, 0, 0, 0.08);
     border-radius: 16px;

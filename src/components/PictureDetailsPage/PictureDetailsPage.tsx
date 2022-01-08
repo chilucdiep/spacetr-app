@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "./PictureDetailsPage.module.scss";
 
 import Navbar from "../Navbar/Navbar";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+
 interface Picture {
   hdurl: string;
   title: string;
@@ -49,6 +52,12 @@ const PictureDetailsPage = ({
   return (
     <>
       <Navbar lightTheme={lightTheme} />
+      <Link to="/feed">
+        <div className={styles.BackButton}>
+          <ArrowBackIosNewIcon fontSize="small" />
+          <h3>Feed</h3>
+        </div>
+      </Link>
       <div className={styles.PictureDetailsPage}>
         <div className={styles.PictureDetailsContainer}>
           <img src={picture.hdurl} alt="Nasa Imagery"></img>

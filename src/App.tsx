@@ -4,7 +4,7 @@ import styles from "./App.module.scss";
 
 import LandingPage from "./components/LandingPage/LandingPage";
 import FeedPage from "./components/FeedPage/FeedPage";
-import PictureDetailsPage from "./components/PictureDetail/PictureDetailsPage";
+import PictureDetailsPage from "./components/PictureDetailsPage/PictureDetailsPage";
 
 function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);
