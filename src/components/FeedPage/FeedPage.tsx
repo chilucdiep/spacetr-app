@@ -5,8 +5,9 @@ import Navbar from "../Navbar/Navbar";
 import Liked from "./Liked/Liked";
 import Feed from "./Feed/Feed";
 
-const FeedPage = ({ pictures }: any) => {
+const FeedPage = ({ pictures, setLightTheme }: any) => {
   const [likedPictures, setLikedPictures] = useState<any[]>([]);
+  setLightTheme(false);
 
   const handleAddLikedPictures = (picture: any) => {
     setLikedPictures([...likedPictures, picture]);

@@ -2,18 +2,27 @@ import { useState, useEffect, useCallback } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styles from "./App.module.scss";
 
-import Navbar from "./components/Navbar/Navbar";
 import LandingPage from "./components/LandingPage/LandingPage";
 import FeedPage from "./components/FeedPage/FeedPage";
-import PictureDetail from "./components/PictureDetail/PictureDetail";
+import PictureDetailsPage from "./components/PictureDetail/PictureDetailsPage";
 
 function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);
   const [pictures, setPictures] = useState<any[]>([]);
   const [loaded, setLoaded] = useState<boolean>(false);
 
+  const root = document.documentElement;
+  root.style.setProperty(
+    "--background-color",
+    lightTheme ? "white" : "#050505"
+  );
+  root.style.setProperty(
+    "--text-color",
+    lightTheme ? "black" : "white"
+  );
+
   const APOD_URL = "https://api.nasa.gov/planetary/apod";
-  const API_KEY = "6A0tZQBiVWL7Tgahg0FxdeTB6DSUf6cMcy5QxMRy";
+  const API_KEY = "9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA";
 
   // const {pictures, loading, fetchMore} = usePictures();
 
@@ -40,13 +49,22 @@ function App() {
     <BrowserRouter>
       <div className={styles.Container}>
         <Routes>
-          <Route path="/" element={<LandingPage pictures={pictures} />} />
-          <Route path="/feed" element={<FeedPage pictures={pictures} />} />
+          <Route
+            path="/"
+            element={
+              <LandingPage pictures={pictures} setLightTheme={setLightTheme} />
+            }
+          />
+          <Route
+            path="/feed"
+            element={
+              <FeedPage pictures={pictures} setLightTheme={setLightTheme} />
+            }
+          />
           <Route
             path="/feed/:id"
             element={
-              <PictureDetail
-                pictures={pictures}
+              <PictureDetailsPage
                 lightTheme={lightTheme}
                 setLightTheme={setLightTheme}
                 APOD_URL={APOD_URL}

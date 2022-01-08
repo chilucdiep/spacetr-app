@@ -4,7 +4,9 @@ import styles from "./LandingPage.module.scss";
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 
-const LandingPage = ({ pictures }: any) => {
+const LandingPage = ({ pictures, setLightTheme }: any) => {
+  setLightTheme(false)
+  
   return (
     <>
       <Navbar />

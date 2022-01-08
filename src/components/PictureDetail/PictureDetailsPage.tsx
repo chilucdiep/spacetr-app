@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "./PictureDetail.module.scss";
+import styles from "./PictureDetailsPage.module.scss";
 
 import Navbar from "../Navbar/Navbar";
 interface Picture {
@@ -9,15 +9,13 @@ interface Picture {
   explanation: string;
 }
 
-const PictureDetail = ({
-  pictures,
+const PictureDetailsPage = ({
   lightTheme,
   setLightTheme,
   APOD_URL,
   API_KEY,
 }: any) => {
   setLightTheme(true);
-  console.log(lightTheme);
 
   const [picture, setPicture] = useState<Picture>({
     hdurl: "",
@@ -26,15 +24,12 @@ const PictureDetail = ({
     explanation: "",
   });
 
-  console.log(String(window.location.href).split("/").pop());
-
   const getPictureRequest = async () => {
     const url = `${APOD_URL}?api_key=${API_KEY}&date=${String(
       window.location.href
     )
       .split("/")
       .pop()}`;
-    console.log(url);
     const response = await fetch(url);
     const responseJson = await response.json();
 
@@ -47,14 +42,12 @@ const PictureDetail = ({
 
   useEffect(() => {
     getPictureRequest();
-  });
-
-  console.log(picture);
+  }, []);
 
   return (
     <>
-      <Navbar lightTheme={lightTheme} />
-      <div className={styles.PictureDetail}>
+      <Navbar lightTheme={lightTheme}/>
+      <div className={styles.PictureDetailsPage}>
         <img src={picture.hdurl} alt="Nasa Imagery"></img>
         <h1>{picture.title}</h1>
         <p>{picture.date}</p>
@@ -64,4 +57,4 @@ const PictureDetail = ({
   );
 };
 
-export default PictureDetail;
+export default PictureDetailsPage;
