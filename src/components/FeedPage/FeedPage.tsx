@@ -9,10 +9,6 @@ const FeedPage = ({ pictures, setLightTheme }: any) => {
   const [likedPictures, setLikedPictures] = useState<any[]>([]);
   setLightTheme(false);
 
-  const handleAddLikedPictures = (picture: any) => {
-    setLikedPictures([...likedPictures, picture]);
-  };
-
   return (
     <>
       <Navbar />
@@ -20,8 +16,8 @@ const FeedPage = ({ pictures, setLightTheme }: any) => {
         <Liked likedPictures={likedPictures} />
         <Feed
           pictures={pictures}
-          onLikeClick={handleAddLikedPictures}
           likedPictures={likedPictures}
+          setLikedPictures={setLikedPictures}
         />
       </div>
     </>
