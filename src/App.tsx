@@ -27,7 +27,7 @@ function App() {
   // const {pictures, loading, fetchMore} = usePictures();
 
   const getPicturesRequest = useCallback(async () => {
-    const url = `${APOD_URL}?api_key=${API_KEY}&count=5`;
+    const url = `${APOD_URL}?api_key=${API_KEY}&count=9`;
     const response = await fetch(url);
     const responseJson = await response.json();
 
