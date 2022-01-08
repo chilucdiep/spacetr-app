@@ -5,9 +5,15 @@ const Liked = ({ likedPictures }: any) => {
     likedPictures.length === 0 ? (
       <h2>No picture liked</h2>
     ) : (
-      <div>
+      <div className={styles.LikedPictures}>
         {likedPictures.map((picture: any) => (
-          <p>{picture.title}</p>
+          <div className={styles.LikedPicture}>
+            <img src={picture.url} alt="Nasa Space Imagery"></img>
+            <div className={styles.Text}>
+              <h5>{picture.title}</h5>
+              <p>{picture.date}</p>
+            </div>
+          </div>
         ))}
       </div>
     );
