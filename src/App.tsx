@@ -48,7 +48,6 @@ function App() {
 
   return (
     <BrowserRouter>
-    <Navbar lightTheme={lightTheme} />
       <div className={styles.Container}>
         <Routes>
           <Route
