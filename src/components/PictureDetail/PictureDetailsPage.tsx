@@ -7,6 +7,7 @@ interface Picture {
   title: string;
   date: string;
   explanation: string;
+  copyright: string;
 }
 
 const PictureDetailsPage = ({
@@ -22,6 +23,7 @@ const PictureDetailsPage = ({
     title: "",
     date: "",
     explanation: "",
+    copyright: "",
   });
 
   const getPictureRequest = async () => {
@@ -46,12 +48,21 @@ const PictureDetailsPage = ({
 
   return (
     <>
-      <Navbar lightTheme={lightTheme}/>
+      <Navbar lightTheme={lightTheme} />
       <div className={styles.PictureDetailsPage}>
-        <img src={picture.hdurl} alt="Nasa Imagery"></img>
-        <h1>{picture.title}</h1>
-        <p>{picture.date}</p>
-        <p>{picture.explanation}</p>
+        <div className={styles.PictureDetailsContainer}>
+          <img src={picture.hdurl} alt="Nasa Imagery"></img>
+          <div className={styles.Text}>
+            <h2>{picture.title}</h2>
+            <p>
+              {picture.date} |{" "}
+              {(picture.copyright && picture.copyright) || "No Copyright"}
+            </p>
+            <div className={styles.Explanation}>
+              <p>{picture.explanation}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -17,6 +17,11 @@ body {
   color: var(--text-color);
 }
 
+::selection {
+  background-color: #357CF2;
+  color: white;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
