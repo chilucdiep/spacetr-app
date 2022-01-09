@@ -49,7 +49,7 @@ const Card = ({ picture, likedPictures, setLikedPictures }: any) => {
       <Link to={`/feed/${picture.date}`} className={styles.LinkContainer}>
         <div className={styles.LinkOverlay}></div>
         <h2>Read more</h2>
-        <img src={picture.hdurl} alt="Nasa Space Imagery"></img>
+        <img src={picture.url} alt="Nasa Space Imagery"></img>
       </Link>
     </div>
   );
