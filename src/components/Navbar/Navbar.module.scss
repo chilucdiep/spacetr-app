@@ -3,6 +3,11 @@
   justify-content: space-between;
   align-items: center;
   height: 9vh;
+  background-color: var(--background-color);
+  padding-bottom: 2em;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 
   .Logo {
     max-width: 200px;

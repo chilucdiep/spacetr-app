@@ -1,9 +1,10 @@
 .Liked {
-  background-color: #0D0D0E;
+  background-color: #141417;
   margin-right: 1em;
   height: 350px;
   border-radius: 8px;
-  position: relative;
+  position: sticky;
+  top: 6em;
   display: grid;
   grid-template-rows: 18% 78%;
   overflow-y: scroll;
