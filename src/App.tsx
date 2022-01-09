@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
 import styles from "./App.module.scss";
 
 import LandingPage from "./components/LandingPage/LandingPage";
@@ -44,7 +44,7 @@ function App() {
   console.log(pictures);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className={styles.Container}>
         <Routes>
           <Route
@@ -73,7 +73,7 @@ function App() {
           <Route path="*" element={<div>404 Page Not Found</div>} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
