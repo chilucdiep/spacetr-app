@@ -5,7 +5,6 @@ import styles from "./App.module.scss";
 import LandingPage from "./components/LandingPage/LandingPage";
 import FeedPage from "./components/FeedPage/FeedPage";
 import PictureDetailsPage from "./components/PictureDetailsPage/PictureDetailsPage";
-import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);
@@ -50,13 +49,21 @@ function App() {
           <Route
             path="/"
             element={
-              <LandingPage pictures={pictures} setLightTheme={setLightTheme} />
+              <LandingPage
+                pictures={pictures}
+                lightTheme={lightTheme}
+                setLightTheme={setLightTheme}
+              />
             }
           />
           <Route
             path="/feed"
             element={
-              <FeedPage pictures={pictures} setLightTheme={setLightTheme} />
+              <FeedPage
+                pictures={pictures}
+                lightTheme={lightTheme}
+                setLightTheme={setLightTheme}
+              />
             }
           />
           <Route

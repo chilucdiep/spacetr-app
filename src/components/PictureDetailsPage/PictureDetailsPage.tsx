@@ -5,12 +5,11 @@ import styles from "./PictureDetailsPage.module.scss";
 import Navbar from "../Navbar/Navbar";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-interface Picture {
-  hdurl: string;
-  title: string;
-  date: string;
-  explanation: string;
-  copyright: string;
+interface PictureDetailsPageProps {
+  lightTheme: boolean;
+  setLightTheme: any;
+  APOD_URL: string;
+  API_KEY: string;
 }
 
 const PictureDetailsPage = ({
@@ -18,8 +17,16 @@ const PictureDetailsPage = ({
   setLightTheme,
   APOD_URL,
   API_KEY,
-}: any) => {
+}: PictureDetailsPageProps) => {
   setLightTheme(true);
+
+  interface Picture {
+    hdurl: string;
+    title: string;
+    date: string;
+    explanation: string;
+    copyright: string;
+  }
 
   const [picture, setPicture] = useState<Picture>({
     hdurl: "",

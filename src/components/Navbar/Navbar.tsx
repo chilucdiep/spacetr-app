@@ -4,7 +4,11 @@ import styles from "./Navbar.module.scss";
 import LogoDark from "../../images/LogoDark.svg";
 import LogoLight from "../../images/LogoLight.svg";
 
-const Navbar = ({ lightTheme }: any) => {
+interface NavbarProps {
+  lightTheme: boolean;
+}
+
+const Navbar = ({ lightTheme }: NavbarProps) => {
   const logoMarkup = lightTheme ? (
     <img src={LogoLight} alt="Logo" className={styles.Logo}></img>
   ) : (

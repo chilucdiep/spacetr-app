@@ -4,12 +4,18 @@ import styles from "./LandingPage.module.scss";
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 
-const LandingPage = ({ pictures, setLightTheme }: any) => {
-  setLightTheme(false)
-  
+interface LandingPageProps {
+  pictures: any;
+  lightTheme: boolean
+  setLightTheme: any;
+}
+
+const LandingPage = ({ pictures, lightTheme, setLightTheme }: LandingPageProps) => {
+  setLightTheme(false);
+
   return (
     <>
-      <Navbar />
+      <Navbar lightTheme={lightTheme} />
       <div className={styles.LandingPage}>
         <div className={styles.Header}>
           <h1>

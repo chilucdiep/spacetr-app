@@ -5,13 +5,19 @@ import Navbar from "../Navbar/Navbar";
 import Liked from "./Liked/Liked";
 import Feed from "./Feed/Feed";
 
-const FeedPage = ({ pictures, setLightTheme }: any) => {
+interface FeedPageProps {
+  pictures: any;
+  lightTheme: boolean
+  setLightTheme: any;
+}
+
+const FeedPage = ({ pictures, lightTheme, setLightTheme }: FeedPageProps) => {
   const [likedPictures, setLikedPictures] = useState<any[]>([]);
   setLightTheme(false);
 
   return (
     <>
-      <Navbar />
+      <Navbar lightTheme={lightTheme} />
       <div className={styles.FeedPage}>
         <Liked likedPictures={likedPictures} />
         <Feed
