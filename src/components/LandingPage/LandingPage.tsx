@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
+import usePictures from "../../hooks/usePictures";
 import styles from "./LandingPage.module.scss";
 
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 
 interface LandingPageProps {
-  pictures: any;
-  lightTheme: boolean
+  lightTheme: boolean;
   setLightTheme: any;
 }
 
-const LandingPage = ({ pictures, lightTheme, setLightTheme }: LandingPageProps) => {
+const LandingPage = ({ lightTheme, setLightTheme }: LandingPageProps) => {
   setLightTheme(false);
+  const APOD_URL = "https://api.nasa.gov/planetary/apod";
+  const API_KEY = "9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA";
+
+  const { pictures } = usePictures(`${APOD_URL}?api_key=${API_KEY}&count=5`);
 
   return (
     <>

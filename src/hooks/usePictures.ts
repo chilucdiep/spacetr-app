@@ -20,6 +20,23 @@ const usePictures = (url: any) => {
         setLoading(false);
       });
   }, [url]);
+
+  const fetchMore = () => {
+    setLoading(true);
+    axios
+      .get(url)
+      .then((response) => {
+        setPictures([...pictures, ...response.data]);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  return { pictures, loading, error, fetchMore };
 };
 
 export default usePictures;

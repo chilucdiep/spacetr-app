@@ -6,12 +6,11 @@ import Liked from "./Liked/Liked";
 import Feed from "./Feed/Feed";
 
 interface FeedPageProps {
-  pictures: any;
-  lightTheme: boolean
+  lightTheme: boolean;
   setLightTheme: any;
 }
 
-const FeedPage = ({ pictures, lightTheme, setLightTheme }: FeedPageProps) => {
+const FeedPage = ({ lightTheme, setLightTheme }: FeedPageProps) => {
   const [likedPictures, setLikedPictures] = useState<any[]>([]);
   setLightTheme(false);
 
@@ -21,7 +20,6 @@ const FeedPage = ({ pictures, lightTheme, setLightTheme }: FeedPageProps) => {
       <div className={styles.FeedPage}>
         <Liked likedPictures={likedPictures} />
         <Feed
-          pictures={pictures}
           likedPictures={likedPictures}
           setLikedPictures={setLikedPictures}
         />

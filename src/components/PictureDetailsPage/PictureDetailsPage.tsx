@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import usePictures from "../../hooks/usePictures";
 import { Link } from "react-router-dom";
 import styles from "./PictureDetailsPage.module.scss";
 
@@ -20,41 +21,52 @@ const PictureDetailsPage = ({
 }: PictureDetailsPageProps) => {
   setLightTheme(true);
 
-  interface Picture {
-    hdurl: string;
-    title: string;
-    date: string;
-    explanation: string;
-    copyright: string;
-  }
+  // interface Picture {
+  //   hdurl: string;
+  //   title: string;
+  //   date: string;
+  //   explanation: string;
+  //   copyright: string;
+  // }
 
-  const [picture, setPicture] = useState<Picture>({
-    hdurl: "",
-    title: "",
-    date: "",
-    explanation: "",
-    copyright: "",
-  });
+  // const [picture, setPicture] = useState<Picture>({
+  //   hdurl: "",
+  //   title: "",
+  //   date: "",
+  //   explanation: "",
+  //   copyright: "",
+  // });
 
-  const getPictureRequest = async () => {
-    const url = `${APOD_URL}?api_key=${API_KEY}&date=${String(
-      window.location.href
-    )
-      .split("/")
-      .pop()}`;
-    const response = await fetch(url);
-    const responseJson = await response.json();
+  // const { pictures } = usePictures(
+  //   `${APOD_URL}?api_key=${API_KEY}&date=${String(window.location.href)
+  //     .split("/")
+  //     .pop()}`
+  // );
+  const { pictures } = usePictures(
+    `https://api.nasa.gov/planetary/apod?api_key=9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA&date=2011-05-11`
+  );
 
-    if (responseJson) {
-      setPicture(responseJson);
-    } else {
-      console.log("error");
-    }
-  };
+  console.log(pictures);
 
-  useEffect(() => {
-    getPictureRequest();
-  }, []);
+  // const getPictureRequest = async () => {
+  //   const url = `${APOD_URL}?api_key=${API_KEY}&date=${String(
+  //     window.location.href
+  //   )
+  //     .split("/")
+  //     .pop()}`;
+  //   const response = await fetch(url);
+  //   const responseJson = await response.json();
+
+  //   if (responseJson) {
+  //     setPicture(responseJson);
+  //   } else {
+  //     console.log("error");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   getPictureRequest();
+  // }, []);
 
   return (
     <>
@@ -65,7 +77,7 @@ const PictureDetailsPage = ({
           <h3>Feed</h3>
         </div>
       </Link>
-      <div className={styles.PictureDetailsPage}>
+      {/* <div className={styles.PictureDetailsPage}>
         <div className={styles.PictureDetailsContainer}>
           <img src={picture.hdurl} alt="Nasa Imagery"></img>
           <div className={styles.Text}>
@@ -79,7 +91,7 @@ const PictureDetailsPage = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
