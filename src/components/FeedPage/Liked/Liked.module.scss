@@ -9,6 +9,10 @@
   grid-template-rows: 18% 78%;
   overflow-y: scroll;
 
+  @media screen and (max-width: 900px) {
+    display: none;
+  }
+
   &::-webkit-scrollbar {
     width: 5px;
     height: 5px;
