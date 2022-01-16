@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const usePictures = (url: any) => {
@@ -11,7 +11,7 @@ const usePictures = (url: any) => {
     axios
       .get(url)
       .then((response) => {
-        setPictures([...pictures, ...response.data]);
+        setPictures(pictures => [...pictures, ...response.data]);
       })
       .catch((err) => {
         setError(err);
@@ -21,12 +21,12 @@ const usePictures = (url: any) => {
       });
   }, [url]);
 
-  const fetchMore = () => {
+  function fetchMore() {
     setLoading(true);
     axios
       .get(url)
       .then((response) => {
-        setPictures([...pictures, ...response.data]);
+        setPictures(pictures => [...pictures, ...response.data]);
       })
       .catch((err) => {
         setError(err);
@@ -34,7 +34,7 @@ const usePictures = (url: any) => {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }
 
   return { pictures, loading, error, fetchMore };
 };
