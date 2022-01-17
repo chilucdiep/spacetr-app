@@ -1,10 +1,10 @@
 ![alt text](https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg)
 
-
+##### 👉 [Try it out here](https://github.com/facebook/create-react-app)
 
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://chilucdiep.github.io/Spacestagram/).
 
 ## Available Scripts
 
