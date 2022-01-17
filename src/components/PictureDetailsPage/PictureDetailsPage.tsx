@@ -20,7 +20,7 @@ const PictureDetailsPage = ({
 }: PictureDetailsPageProps) => {
   setLightTheme(true);
 
-  // const { pictures } = usePictures(
+  // const { picture } = usePicture(
   //   `${APOD_URL}?api_key=${API_KEY}&date=${String(window.location.href)
   //     .split("/")
   //     .pop()}`
@@ -28,8 +28,8 @@ const PictureDetailsPage = ({
   const { picture, error } = usePicture(
     `https://api.nasa.gov/planetary/apod?api_key=9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA&date=2006-01-31`
   );
- 
 
+  console.log(picture);
 
   return (
     <>
