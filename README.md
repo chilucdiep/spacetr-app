@@ -1,4 +1,4 @@
-![alt text](https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg  width=300)
+![alt text](https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg | width=300)
 
 # Getting Started with Create React App
 
@@ -8,7 +8,7 @@ Spacestagram is a web app where users can browser through NASA’s pictures, rea
 
 # Table of Content
 <details>
-  <summary>Table of Contents</summary>
+  <h1>Table of Contents</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
