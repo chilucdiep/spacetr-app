@@ -1,4 +1,6 @@
 ![Logo](https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg)
+# <div align="center"><img src="/src/LogoLight/title.svg"></div>
+
 
 # About
 
