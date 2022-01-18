@@ -1,4 +1,4 @@
-# <div align="center"><img src="https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg" width="90%"></div>
+# <div align="center"><img src="https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg" width="80%"></div>
 
 
 # About
