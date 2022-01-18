@@ -7,7 +7,7 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 
 #### 👉 [Try it out here](https://github.com/facebook/create-react-app)
 
-## Table of Contents
+# Table of Contents
 
 1. [Technologies Used](#technologies)
 2. [App Features](#features)
