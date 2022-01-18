@@ -12,7 +12,7 @@ Spacestagram is a web app where users can browser through NASA’s pictures, rea
 1. [Technologies Used](#technologies)
 2. [App Features](#features)
 3. [About the Developer](#about-me)
-4. 3. [Deployment](#deployment)
+4. [Deployment](#deployment)
 
 
 ## <a name="technologies"></a>Technologies Used
