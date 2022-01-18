@@ -1,5 +1,5 @@
 ![Logo](https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg)
-# <div align="center"><img src="https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg" width="120"%></div>
+# <div align="center"><img src="https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg" width="120%"></div>
 
 
 # About
