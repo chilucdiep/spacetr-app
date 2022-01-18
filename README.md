@@ -16,11 +16,12 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 
 
 ## <a name="technologies"></a>Technologies Used
+- React
 - TypeScript
-- [React Router](https://reactrouter.com/)
-- [NASA's APOD API](https://api.nasa.gov/#apod/)
 - HTML
 - SCSS
+- [React Router](https://reactrouter.com/)
+- [NASA's APOD API](https://api.nasa.gov/#apod/)
 
 ## <a name="features"></a>App Features
 
