@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { Picture } from '../Interfaces'
+
 const usePictures = (url: any) => {
-  const [pictures, setPictures] = useState<any[]>([]);
+  const [pictures, setPictures] = useState<Picture[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
 

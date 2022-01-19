@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { Picture } from '../Interfaces'
+
 function usePicture(url: any) {
-  const [picture, setPicture] = useState<any|null>(null);
+  const [picture, setPicture] = useState<Picture|null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
 
@@ -12,6 +14,7 @@ function usePicture(url: any) {
       .get(url)
       .then((response) => {
         setPicture(response.data);
+        console.log(response.data)
       })
       .catch((err) => {
         setError(err);

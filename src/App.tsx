@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
-import usePictures from "./hooks/usePictures";
 import styles from "./App.module.scss";
 
 import LandingPage from "./components/LandingPage/LandingPage";
@@ -9,8 +8,6 @@ import PictureDetailsPage from "./components/PictureDetailsPage/PictureDetailsPa
 
 function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);
-  // const [pictures, setPictures] = useState<any[]>([]);
-  // const [loaded, setLoaded] = useState<boolean>(false);
 
   const root = document.documentElement;
   root.style.setProperty(
@@ -21,29 +18,6 @@ function App() {
 
   const APOD_URL = "https://api.nasa.gov/planetary/apod";
   const API_KEY = "9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA";
-
-  const { pictures, loading, error, fetchMore } = usePictures(
-    `${APOD_URL}?api_key=${API_KEY}&count=9`
-  );
-
-  // const getPicturesRequest = useCallback(async () => {
-  //   const url = `${APOD_URL}?api_key=${API_KEY}&count=9`;
-  //   const response = await fetch(url);
-  //   const responseJson = await response.json();
-
-  //   if (responseJson) {
-  //     setPictures((pictures) => [...pictures, ...responseJson]);
-  //     setLoaded(true);
-  //   } else {
-  //     console.log("error");
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   getPicturesRequest();
-  // }, [getPicturesRequest]);
-
-  console.log(pictures);
 
   return (
     <HashRouter>
