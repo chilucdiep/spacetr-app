@@ -15,7 +15,7 @@ const LandingPage = ({ lightTheme, setLightTheme }: LandingPageProps) => {
   const APOD_URL = "https://api.nasa.gov/planetary/apod";
   const API_KEY = "9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA";
 
-  const { pictures } = usePictures(`${APOD_URL}?api_key=${API_KEY}&count=5`);
+  const { pictures } = usePictures(5);
 
   return (
     <>

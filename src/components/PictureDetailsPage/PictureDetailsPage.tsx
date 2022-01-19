@@ -9,22 +9,16 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 interface PictureDetailsPageProps {
   lightTheme: boolean;
   setLightTheme: any;
-  APOD_URL: string;
-  API_KEY: string;
 }
 
 const PictureDetailsPage = ({
   lightTheme,
   setLightTheme,
-  APOD_URL,
-  API_KEY,
 }: PictureDetailsPageProps) => {
   setLightTheme(true);
 
   const { picture } = usePicture(
-    `${APOD_URL}?api_key=${API_KEY}&date=${String(window.location.href)
-      .split("/")
-      .pop()}`
+    `${String(window.location.href).split("/").pop()}`
   );
 
   const pictureContentMarkup = picture ? (

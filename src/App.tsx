@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import styles from "./App.module.scss";
 
 import LandingPage from "./components/LandingPage/LandingPage";
@@ -15,9 +15,6 @@ function App() {
     lightTheme ? "white" : "#050505"
   );
   root.style.setProperty("--text-color", lightTheme ? "black" : "white");
-
-  const APOD_URL = "https://api.nasa.gov/planetary/apod";
-  const API_KEY = "9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA";
 
   return (
     <HashRouter>
@@ -44,8 +41,6 @@ function App() {
               <PictureDetailsPage
                 lightTheme={lightTheme}
                 setLightTheme={setLightTheme}
-                APOD_URL={APOD_URL}
-                API_KEY={API_KEY}
               />
             }
           />
