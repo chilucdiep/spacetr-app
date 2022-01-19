@@ -31,7 +31,7 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 
 ## <a name="about-me"></a>About The Developer
 
-Hi! 👋 I'm Chi-Luc, currently a Frontend Developer currently working as a UX Designer in the Usage Analytics team at Coveo. I love to build accessible and easy to use UI's to solve real world problems.
+Hi! 👋 I'm Chi-Luc, a Frontend Developer currently working as a UX Designer in the Usage Analytics team at Coveo. I love to build accessible and easy to use UI's to solve real world problems.
 
 ## <a name="deployment"></a>Deployment
 
