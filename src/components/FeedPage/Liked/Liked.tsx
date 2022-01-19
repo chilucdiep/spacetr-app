@@ -7,7 +7,7 @@ interface LikedProps {
   likedPictures: Picture[];
 }
 
-const Liked = ({ likedPictures }: LikedProps) => {
+function Liked({ likedPictures }: LikedProps) {
   const lickedPicturesMarkup =
     likedPictures.length === 0 ? (
       <h2>No picture liked</h2>
@@ -35,6 +35,6 @@ const Liked = ({ likedPictures }: LikedProps) => {
       {lickedPicturesMarkup}
     </div>
   );
-};
+}
 
 export default Liked;

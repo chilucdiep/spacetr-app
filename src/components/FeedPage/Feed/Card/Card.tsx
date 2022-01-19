@@ -2,25 +2,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Card.module.scss";
 
+import { Picture } from "../../../../Interfaces";
 import { FormControlLabel } from "@mui/material";
 import Checkbox from "@material-ui/core/Checkbox";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const Card = ({ picture, likedPictures, setLikedPictures }: any) => {
+interface CardProps {
+  picture: Picture;
+  likedPictures: Picture[];
+  setLikedPictures: any;
+}
+
+function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
   const [checked, setChecked] = useState<boolean>(true);
 
-  const handleLikedPictures = (picture: any) => {
-    setChecked((checked) => !checked);
-    if (checked) {
-      setLikedPictures([...likedPictures, picture]);
-    } else {
-      const updatedLikedPictures = likedPictures.filter(
-        (likedPicture: any) => likedPicture.date !== picture.date
-      );
-      setLikedPictures(updatedLikedPictures);
-    }
-  };
   return (
     <div className={styles.Card}>
       <div className={styles.Header}>
@@ -53,6 +49,18 @@ const Card = ({ picture, likedPictures, setLikedPictures }: any) => {
       </Link>
     </div>
   );
-};
+
+  function handleLikedPictures(picture: Picture) {
+    setChecked((checked) => !checked);
+    if (checked) {
+      setLikedPictures([...likedPictures, picture]);
+    } else {
+      const updatedLikedPictures = likedPictures.filter(
+        (likedPicture) => likedPicture.date !== picture.date
+      );
+      setLikedPictures(updatedLikedPictures);
+    }
+  }
+}
 
 export default Card;

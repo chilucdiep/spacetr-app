@@ -8,7 +8,7 @@ interface NavbarProps {
   lightTheme: boolean;
 }
 
-const Navbar = ({ lightTheme }: NavbarProps) => {
+function Navbar({ lightTheme }: NavbarProps) {
   const logoMarkup = lightTheme ? (
     <img src={LogoLight} alt="Logo" className={styles.Logo}></img>
   ) : (
@@ -17,9 +17,7 @@ const Navbar = ({ lightTheme }: NavbarProps) => {
 
   return (
     <div className={styles.Navbar}>
-      <Link to="/">
-        {logoMarkup}
-      </Link>
+      <Link to="/">{logoMarkup}</Link>
       <div className={styles.NavLinks}>
         <ul>
           <li>
@@ -42,6 +40,6 @@ const Navbar = ({ lightTheme }: NavbarProps) => {
       </div>
     </div>
   );
-};
+}
 
 export default Navbar;

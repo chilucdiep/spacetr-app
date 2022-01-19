@@ -12,7 +12,7 @@ interface FeedPageProps {
   setLightTheme: any;
 }
 
-const FeedPage = ({ lightTheme, setLightTheme }: FeedPageProps) => {
+function FeedPage({ lightTheme, setLightTheme }: FeedPageProps) {
   setLightTheme(false);
 
   const [likedPictures, setLikedPictures] = useState<Picture[]>([]);
@@ -29,6 +29,6 @@ const FeedPage = ({ lightTheme, setLightTheme }: FeedPageProps) => {
       </div>
     </>
   );
-};
+}
 
 export default FeedPage;

@@ -4,7 +4,7 @@ import axios from "axios";
 import { Picture } from "../Interfaces";
 import { APOD_URL, API_KEY } from "./utils";
 
-const usePictures = (count: number) => {
+function usePictures(count: number) {
   const [pictures, setPictures] = useState<Picture[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);

@@ -9,7 +9,7 @@ interface FeedProps {
   setLikedPictures: any;
 }
 
-const Feed = ({ likedPictures, setLikedPictures }: FeedProps) => {
+function Feed({ likedPictures, setLikedPictures }: FeedProps) {
   const { pictures } = usePictures(8);
 
   return (
@@ -24,6 +24,6 @@ const Feed = ({ likedPictures, setLikedPictures }: FeedProps) => {
       ))}
     </div>
   );
-};
+}
 
 export default Feed;

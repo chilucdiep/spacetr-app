@@ -10,10 +10,10 @@ interface PictureDetailsPageProps {
   setLightTheme: any;
 }
 
-const PictureDetailsPage = ({
+function PictureDetailsPage({
   lightTheme,
   setLightTheme,
-}: PictureDetailsPageProps) => {
+}: PictureDetailsPageProps) {
   setLightTheme(true);
 
   const { picture } = usePicture(
@@ -48,6 +48,6 @@ const PictureDetailsPage = ({
       <div className={styles.PictureDetailsPage}>{pictureContentMarkup}</div>
     </>
   );
-};
+}
 
 export default PictureDetailsPage;

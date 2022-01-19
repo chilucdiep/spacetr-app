@@ -11,7 +11,7 @@ interface LandingPageProps {
   setLightTheme: any;
 }
 
-const LandingPage = ({ lightTheme, setLightTheme }: LandingPageProps) => {
+function LandingPage({ lightTheme, setLightTheme }: LandingPageProps) {
   setLightTheme(false);
 
   const { pictures } = usePictures(5);
@@ -42,6 +42,6 @@ const LandingPage = ({ lightTheme, setLightTheme }: LandingPageProps) => {
       </div>
     </>
   );
-};
+}
 
 export default LandingPage;
