@@ -5,14 +5,17 @@ import Navbar from "../Navbar/Navbar";
 import Liked from "./Liked/Liked";
 import Feed from "./Feed/Feed";
 
+import { Picture } from "../../Interfaces";
+
 interface FeedPageProps {
   lightTheme: boolean;
   setLightTheme: any;
 }
 
 const FeedPage = ({ lightTheme, setLightTheme }: FeedPageProps) => {
-  const [likedPictures, setLikedPictures] = useState<any[]>([]);
   setLightTheme(false);
+
+  const [likedPictures, setLikedPictures] = useState<Picture[]>([]);
 
   return (
     <>

@@ -1,11 +1,11 @@
 import usePictures from "../../../hooks/usePictures";
 import styles from "./Feed.module.scss";
 
-import {Picture} from '../../../Interfaces'
+import { Picture } from "../../../Interfaces";
 import Card from "./Card/Card";
 
 interface FeedProps {
-  likedPictures: any;
+  likedPictures: Picture[];
   setLikedPictures: any;
 }
 
@@ -14,7 +14,7 @@ const Feed = ({ likedPictures, setLikedPictures }: FeedProps) => {
 
   return (
     <div className={styles.Feed}>
-      {pictures.map((picture: Picture, key:number) => (
+      {pictures?.map((picture: Picture, key: number) => (
         <Card
           picture={picture}
           likedPictures={likedPictures}

@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
 import styles from "./Liked.module.scss";
 
-const Liked = ({ likedPictures }: any) => {
+import { Picture } from "../../../Interfaces";
+
+interface LikedProps {
+  likedPictures: Picture[];
+}
+
+const Liked = ({ likedPictures }: LikedProps) => {
   const lickedPicturesMarkup =
     likedPictures.length === 0 ? (
       <h2>No picture liked</h2>
     ) : (
       <div className={styles.LikedPictures}>
-        {likedPictures.map((picture: any) => (
-          <div className={styles.LikedPicture}>
+        {likedPictures.map((picture: Picture, key: number) => (
+          <div className={styles.LikedPicture} key={key}>
             <Link to={`/feed/${picture.date}`}>
               <img src={picture.url} alt="Nasa Space Imagery"></img>
             </Link>
@@ -22,6 +28,7 @@ const Liked = ({ likedPictures }: any) => {
         ))}
       </div>
     );
+
   return (
     <div className={styles.Liked}>
       <h4>Pictures you've liked</h4>

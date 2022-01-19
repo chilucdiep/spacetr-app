@@ -1,5 +1,4 @@
 import usePicture from "../../hooks/usePicture";
-import usePictures from "../../hooks/usePictures";
 import { Link } from "react-router-dom";
 import styles from "./PictureDetailsPage.module.scss";
 

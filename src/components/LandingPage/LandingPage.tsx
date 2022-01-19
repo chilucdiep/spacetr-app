@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import usePictures from "../../hooks/usePictures";
 import styles from "./LandingPage.module.scss";
 
+import { Picture } from "../../Interfaces";
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 
@@ -12,8 +13,6 @@ interface LandingPageProps {
 
 const LandingPage = ({ lightTheme, setLightTheme }: LandingPageProps) => {
   setLightTheme(false);
-  const APOD_URL = "https://api.nasa.gov/planetary/apod";
-  const API_KEY = "9guRyYAY594OtPx1YP6IlfWME4lFznqFN2hEQWMA";
 
   const { pictures } = usePictures(5);
 
@@ -35,8 +34,8 @@ const LandingPage = ({ lightTheme, setLightTheme }: LandingPageProps) => {
         <div className={styles.Bottom}>
           <div className={styles.Overlay}></div>
           <div className={styles.Images}>
-            {pictures.map((picture: any) => (
-              <img src={picture.hdurl} alt="Nasa Imagery"></img>
+            {pictures?.map((picture: Picture, key: number) => (
+              <img src={picture.hdurl} alt="Nasa Imagery" key={key}></img>
             ))}
           </div>
         </div>
