@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Liked.module.scss";
 
-import { Picture } from "../../../Interfaces";
+import { Picture } from "../../../types/Interfaces";
 
 interface LikedProps {
   likedPictures: Picture[];

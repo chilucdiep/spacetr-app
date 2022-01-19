@@ -1,7 +1,7 @@
 import usePictures from "../../../hooks/usePictures";
 import styles from "./Feed.module.scss";
 
-import { Picture } from "../../../Interfaces";
+import { Picture } from "../../../types/Interfaces";
 import Card from "./Card/Card";
 
 interface FeedProps {

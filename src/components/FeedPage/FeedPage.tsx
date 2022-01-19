@@ -5,7 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import Liked from "./Liked/Liked";
 import Feed from "./Feed/Feed";
 
-import { Picture } from "../../Interfaces";
+import { Picture } from "../../types/Interfaces";
 
 interface FeedPageProps {
   lightTheme: boolean;

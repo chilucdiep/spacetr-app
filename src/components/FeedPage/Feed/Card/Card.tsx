@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Card.module.scss";
 
-import { Picture } from "../../../../Interfaces";
+import { Picture } from "../../../../types/Interfaces";
 import { FormControlLabel } from "@mui/material";
 import Checkbox from "@material-ui/core/Checkbox";
 import FavoriteIcon from "@mui/icons-material/Favorite";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import { Picture } from '../Interfaces'
+import { Picture } from '../types/Interfaces'
 import { APOD_URL, API_KEY} from './utils'
 
 function usePicture(date: string) {
