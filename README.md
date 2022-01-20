@@ -36,6 +36,7 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 
 - Save a user's liked pictures to local storage so results will persist even if they leave the page.
 - Add an infinite scroll that loads additional pictures as the user scrolls.
+- Add a UI skeleton loading animation while user wait for NASA’s API to return data.
 
 ## <a name="about-me"></a>About The Developer
 
