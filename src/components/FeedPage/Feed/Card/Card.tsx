@@ -17,7 +17,7 @@ interface CardProps {
 function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
   const [checked, setChecked] = useState<boolean>(true);
 
-  return (
+  const cardMarkup = picture ? (
     <div className={styles.Card}>
       <div className={styles.Header}>
         <div className={styles.Information}>
@@ -35,6 +35,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
                 checkedIcon={<FavoriteIcon />}
                 name="checkedH"
                 onClick={() => handleLikedPictures(picture)}
+                data-testid="like-button"
               />
             }
             label=""
@@ -48,7 +49,9 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
         <img src={picture.url} alt="Nasa Space Imagery"></img>
       </Link>
     </div>
-  );
+  ) : null;
+
+  return <>{cardMarkup}</>;
 
   function handleLikedPictures(picture: Picture) {
     setChecked((checked) => !checked);
