@@ -11,8 +11,9 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 
 1. [Technologies Used](#technologies)
 2. [App Features](#features)
-3. [About the Developer](#about-me)
-4. [Deployment](#deployment)
+3. 2. [Future Improvements](#improvements)
+4. [About the Developer](#about-me)
+5. [Deployment](#deployment)
 
 
 ## <a name="technologies"></a>Technologies Used
@@ -25,9 +26,16 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 
 ## <a name="features"></a>App Features
 
-- Users can browser through all the astronomy pictures and give a "like" to as many as they want.
-- A user can read more information about a specific picture, such as the picture's date, context, copyright, etc.., by going on the picture's details page.
+- Users can browser through all the astronomy pictures on the feed page and give a "like" to as many as they want.
+- Liked pictures will appear the in "Pictures you've liked" section of the feed page. The "unlike" action from the user will remove the picture from the section.
+- A user can read more information about a specific picture (such as the picture's date, context, copyright, etc..) by going on the picture's details page.
+- Each picture has a details page with a designated url that can be shared.
 - The design of the app is responsive and can be viewed on desktop or mobile.
+
+## <a name="features"></a>App Features
+
+- Save a user's liked pictures to local storage so results will persist even if they leave the page.
+- Add an infinite scroll that loads additional pictures as the user scrolls.
 
 ## <a name="about-me"></a>About The Developer
 
