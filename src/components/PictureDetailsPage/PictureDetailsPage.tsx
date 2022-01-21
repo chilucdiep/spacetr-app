@@ -27,7 +27,7 @@ function PictureDetailsPage({
         <h2>{picture.title}</h2>
         <p>
           {picture.date} |{" "}
-          {(picture.copyright && picture.copyright) || "No Copyright"}
+          {picture.copyright ? picture.copyright : "No Copyright"}
         </p>
         <div className={styles.Explanation}>
           <p>{picture.explanation}</p>

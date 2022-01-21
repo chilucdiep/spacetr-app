@@ -24,7 +24,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
           <h3>{picture.title}</h3>
           <p>
             {picture.date} |{" "}
-            {(picture.copyright && picture.copyright) || "No Copyright"}
+            {picture.copyright ? picture.copyright : "No Copyright"}
           </p>
         </div>
         <div className={styles.Button}>
