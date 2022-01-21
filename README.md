@@ -24,15 +24,16 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 - [NASA's APOD API](https://api.nasa.gov/#apod/)
 - [React Router](https://reactrouter.com/)
 - [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer)
+- [React Testing Library](https://github.com/testing-library/react-testing-library)
 
 ## <a name="features"></a>App Features
 
-- Users can browser through all the astronomy pictures on the feed page and give a "like" to as many as they want.
+- Users can browser through all the [NASA's astronomy pictures](https://api.nasa.gov/#apod/) on the feed page and give a "like" to as many as they want.
 - Liked pictures will appear the in "Pictures you've liked" section of the feed page. The "unlike" action from the user will remove the picture from the section.
 - A user can read more information about a specific picture (such as the picture's date, context, copyright, etc..) by going on the picture's details page.
-- Each picture has a details page with a designated url that can be shared.
+- Each picture has a details page with a designated url that can be shared. All links created using [React Router](https://reactrouter.com/). 
 - The design of the app is responsive and can be viewed on all devices.
-- The feed page loads additional pictures as the user scrolls down (infinite scroll implemented with [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer))
+- The feed page loads additional pictures as the user scrolls down (infinite scroll implemented with [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer)).
 
 ## <a name="improvements"></a>Future Improvements
 
