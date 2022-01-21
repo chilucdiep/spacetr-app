@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { TailSpin } from "react-loader-spinner";
 import usePictures from "../../../hooks/usePictures";
