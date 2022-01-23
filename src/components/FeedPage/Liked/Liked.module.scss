@@ -14,15 +14,15 @@
   }
 
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
     height: 5px;
   }
   &::-webkit-scrollbar-track {
-    opacity: 0;
+    opacity: 1;
+    background-color: #242424;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #000000;
-    border-radius: 10px;
   }
 
   h4 {

@@ -60,19 +60,17 @@
       }
 
       img {
-        // max-width: 220px;
         min-width: none;
         height: 55vh;
         object-fit: cover;
         border-radius: 8px;
-        // margin-right: 1em;
 
         &:nth-child(2n + 2) {
           margin-top: 5em;
         }
 
         &:nth-child(3) {
-          margin-top: 12em;
+          margin-top: 10em;
         }
       }
     }
