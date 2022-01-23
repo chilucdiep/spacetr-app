@@ -18,11 +18,11 @@
     height: 5px;
   }
   &::-webkit-scrollbar-track {
-    opacity: 1;
-    background-color: #242424;
+    opacity: 0;
   }
   &::-webkit-scrollbar-thumb {
     background-color: #000000;
+    border-radius: 8px;
   }
 
   h4 {
