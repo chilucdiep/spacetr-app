@@ -16,7 +16,7 @@ function PictureDetailsPage({
 }: PictureDetailsPageProps) {
   setLightTheme(true);
 
-  const { picture } = usePicture(
+  const { picture, error } = usePicture(
     `${String(window.location.href).split("/").pop()}`
   );
 
@@ -46,6 +46,7 @@ function PictureDetailsPage({
         </div>
       </Link>
       <div className={styles.PictureDetailsPage}>{pictureContentMarkup}</div>
+      {error && <p>Error fetching your picture. Please refresh the page.</p>}
     </>
   );
 }

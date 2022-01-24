@@ -34,7 +34,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
                 icon={<FavoriteBorderIcon style={{ color: "white" }} />}
                 checkedIcon={<FavoriteIcon />}
                 name="checkedH"
-                onClick={() => handleLikedPictures(picture)}
+                onClick={() => handleLikedPictures()}
                 data-testid="like-button"
               />
             }
@@ -53,7 +53,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
 
   return <>{cardMarkup}</>;
 
-  function handleLikedPictures(picture: Picture) {
+  function handleLikedPictures() {
     setChecked((checked) => !checked);
     if (checked) {
       setLikedPictures([...likedPictures, picture]);
