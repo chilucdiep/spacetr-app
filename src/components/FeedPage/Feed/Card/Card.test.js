@@ -16,7 +16,7 @@ it("renders correctly", () => {
 });
 
 describe('Picture liked', () => {
-  it('calls setLikedPictures with the liked picture and previous pictures when checked is true', () => {
+  it('calls setLikedPictures with the liked picture when liked button is clicked once', () => {
     // setup
     const handleLikedPictures = jest.fn()
     renderWithWrapper(<Card {...defaultProps} setLikedPictures={handleLikedPictures} />);
@@ -28,16 +28,22 @@ describe('Picture liked', () => {
     expect(handleLikedPictures).toHaveBeenCalledWith([defaultProps.picture]);
   })
 
-  it('does not call setLikedPictures with the liked picture and previous pictures when checked is false', () => {
-    // setup
+  it('calls setLikedPictures with the liked picture and previous pictures liked button is clicked once', () => {
+    const handleLikedPictures = jest.fn()
+    renderWithWrapper(<Card {...defaultProps} likedPictures={[mockPicture]} setLikedPictures={handleLikedPictures} />);
+
+    fireEvent.click(screen.queryByTestId("like-button"));
+
+    expect(handleLikedPictures).toHaveBeenCalledWith([...[mockPicture], defaultProps.picture]);
+  })
+
+  it('does not call setLikedPictures with the liked picture and previous pictures liked button is clicked twice', () => {
     const handleLikedPictures = jest.fn()
     renderWithWrapper(<Card {...defaultProps} setLikedPictures={handleLikedPictures} />);
 
-    // /action
     fireEvent.click(screen.queryByTestId("like-button"));
     fireEvent.click(screen.queryByTestId("like-button"));
 
-    // assertion
     expect(handleLikedPictures).lastCalledWith([]);
   })
 })
