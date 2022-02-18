@@ -6,6 +6,7 @@ import Liked from "./Liked/Liked";
 import Feed from "./Feed/Feed";
 
 import { Picture } from "../../types/Interfaces";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 interface FeedPageProps {
   lightTheme: boolean;
@@ -15,7 +16,7 @@ interface FeedPageProps {
 function FeedPage({ lightTheme, setLightTheme }: FeedPageProps) {
   setLightTheme(false);
 
-  const [likedPictures, setLikedPictures] = useState<Picture[]>([]);
+  const [likedPictures, setLikedPictures] = useLocalStorage('likedPictures', []);
 
   return (
     <>
