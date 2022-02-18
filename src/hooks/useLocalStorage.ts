@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
-import { Picture } from "../types/Interfaces";
 
-export default function useLocalStorage(key: string, defaultValue: any) {
-    const [value, setValue] = useState(() => {
-        const jsonValue = localStorage.getItem(key)
-        if (jsonValue !== null) return JSON.parse(jsonValue)
+export default function useLocalStorage(key: string, defaultValue: []) {
+  const [value, setValue] = useState(() => {
 
-        if(typeof defaultValue === 'function') {
-            return defaultValue()
-        } else {
-            return defaultValue
-        }
-    })
+    const jsonValue = localStorage.getItem(key);
+    if (jsonValue !== null) return JSON.parse(jsonValue);
+    return defaultValue;
+  });
 
-useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value))
-}, [key, value])
+  useEffect(() => {
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
 
-    return [value, setValue]
+  return [value, setValue];
 }
