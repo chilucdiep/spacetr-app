@@ -29,14 +29,13 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
         </div>
         <div className={styles.Button}>
           <FormControlLabel
+            data-testid="like-button"
             control={
               <Checkbox
                 icon={<FavoriteBorderIcon style={{ color: "white" }} />}
                 checkedIcon={<FavoriteIcon />}
                 name="checkedH"
-                onClick={() => handleLikedPictures()}
-                data-testid="like-button"
-              />
+                onClick={handleLikedPictures}/>
             }
             label=""
           />
@@ -45,7 +44,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
       <div className={styles.Overlay}></div>
       <Link to={`/feed/${picture.date}`} className={styles.LinkContainer}>
         <div className={styles.LinkOverlay}></div>
-        <h2>Read more</h2>
+        <h2>Read more</h2>s
         <img src={picture.url} alt="Nasa Space Imagery"></img>
       </Link>
     </div>

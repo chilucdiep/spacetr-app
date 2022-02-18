@@ -1,20 +1,43 @@
-// import React from "react";
-// import { render, fireEvent } from "@testing-library/react";
-// import Card from "./Card";
+import React from "react";
+import { screen, fireEvent } from "@testing-library/react";
+import Card from "./Card";
+import {renderWithWrapper} from '../../../../util/test'
 
-// it("renders correctly", () => {
-//   const getByTestId = render(<Card />);
+const mockPicture = {date: "somedat",explanation: "exp", hdurl: "",media_type: "",service_version: "",title: "title",url: "",copyright: "cp" };
+const defaultProps = {
+    picture:mockPicture,
+    likedPictures:[],
+}
 
-//   expect(getByTestId("like-button")).toBeTruthy();
-// });
+it("renders correctly", () => {
+    renderWithWrapper(<Card {...defaultProps}  />);
 
-// describe('Picture liked', () => {
-//   it('updates on click', () => {
-//     const handleLikedPictures = jest.fn()
+    expect(screen.getByTestId("like-button")).toBeTruthy();
+});
 
-//     const { queryByTestId} = render(<Card handleLikedPictures={handleLikedPictures} />);
+describe('Picture liked', () => {
+  it('calls setLikedPictures with the liked picture and previous pictures when checked is true', () => {
+    // setup
+    const handleLikedPictures = jest.fn()
+    renderWithWrapper(<Card {...defaultProps} setLikedPictures={handleLikedPictures} />);
 
-//     fireEvent.click(queryByTestId("like-button")})
-//     expect(handleLikedPictures).toHaveBeenCalled()
-//   })
-// })
+    // /action
+    fireEvent.click(screen.queryByTestId("like-button"));
+
+    // assertion
+    expect(handleLikedPictures).toHaveBeenCalledWith([defaultProps.picture]);
+  })
+
+  it('does not call setLikedPictures with the liked picture and previous pictures when checked is false', () => {
+    // setup
+    const handleLikedPictures = jest.fn()
+    renderWithWrapper(<Card {...defaultProps} setLikedPictures={handleLikedPictures} />);
+
+    // /action
+    fireEvent.click(screen.queryByTestId("like-button"));
+    fireEvent.click(screen.queryByTestId("like-button"));
+
+    // assertion
+    expect(handleLikedPictures).lastCalledWith([]);
+  })
+})
