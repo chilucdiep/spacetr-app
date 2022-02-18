@@ -35,10 +35,10 @@ Spacestagram is a web app where users can browse through NASA’s pictures, read
 - Each picture has a details page with a designated url that can be shared. All links created using [React Router](https://reactrouter.com/). 
 - The design of the app is responsive and can be viewed on all devices.
 - The feed page loads additional pictures as the user scrolls down (infinite scroll implemented with [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer)).
+- A user's liked pictures to local storage so results will persist even if they leave the page.
 
 ## <a name="improvements"></a>Future Improvements
 
-- Save a user's liked pictures to local storage so results will persist even if they leave the page.
 - Add a UI skeleton loading animation while user wait for NASA’s API to return data.
 
 ## <a name="about-me"></a>About The Developer
