@@ -30,6 +30,8 @@ function Feed({ likedPictures, setLikedPictures }: FeedProps) {
     }
   }, [inView]);
 
+  console.log(pictures)
+
   const picturesMarkup = inversePictures ? (
     <div className={styles.Pictures}>
       {inversePictures?.map((picture: Picture, index: number) =>

@@ -2,10 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  opacity: .6;
+  opacity: 0.6;
   width: 65px;
   margin-top: 1em;
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 
   &:hover {
     opacity: 1;
@@ -25,15 +25,20 @@
     @media screen and (min-width: 700px) {
       display: flex;
 
-      img {
+      img, .Video {
         width: 50%;
         border-radius: 16px 0px 0px 16px !important;
       }
     }
 
-    img {
+    img,
+    .Video {
       object-fit: cover;
       border-radius: 16px 16px 0px 0px;
+    }
+
+    iframe {
+      overflow: hidden;
     }
 
     .Text {
@@ -43,10 +48,10 @@
         font-size: 2.2rem;
       }
 
-      p{
+      p {
         opacity: 1;
-        font-size: .8rem;
-        margin-top: .5em;
+        font-size: 0.8rem;
+        margin-top: 0.5em;
       }
 
       .Explanation {

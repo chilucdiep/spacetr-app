@@ -20,9 +20,23 @@ function PictureDetailsPage({
     `${String(window.location.href).split("/").pop()}`
   );
 
+  const mediaMarkup = picture ? (
+    picture.media_type === "image" ? (
+      <img src={picture.url} alt="Nasa Space Imagery"></img>
+    ) : (
+      <div className={styles.Video}>
+        <iframe
+          height="100%"
+          src={picture.url}
+          title={picture.title}
+        ></iframe>
+      </div>
+    )
+  ) : null;
+
   const pictureContentMarkup = picture ? (
     <div className={styles.PictureDetailsContainer}>
-      <img src={picture.hdurl} alt="Nasa Imagery"></img>
+      {mediaMarkup}
       <div className={styles.Text}>
         <h2>{picture.title}</h2>
         <p>
