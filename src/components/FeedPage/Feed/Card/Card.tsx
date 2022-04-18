@@ -44,7 +44,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
       <div className={styles.Overlay}></div>
       <Link to={`/feed/${picture.date}`} className={styles.LinkContainer}>
         <div className={styles.LinkOverlay}></div>
-        <h2>Read more</h2>s
+        <h2>Read more</h2>
         <img src={picture.url} alt="Nasa Space Imagery"></img>
       </Link>
     </div>

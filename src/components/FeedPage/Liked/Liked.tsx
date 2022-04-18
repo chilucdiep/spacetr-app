@@ -8,7 +8,7 @@ interface LikedProps {
 }
 
 function Liked({ likedPictures }: LikedProps) {
-  const lickedPicturesMarkup =
+  const likedPicturesMarkup =
     likedPictures.length === 0 ? (
       <h2>No picture liked</h2>
     ) : (
@@ -32,7 +32,7 @@ function Liked({ likedPictures }: LikedProps) {
   return (
     <div className={styles.Liked}>
       <h4>Pictures you've liked</h4>
-      {lickedPicturesMarkup}
+      {likedPicturesMarkup}
     </div>
   );
 }

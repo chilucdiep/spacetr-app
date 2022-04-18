@@ -17,7 +17,6 @@ function usePicture(date: string) {
       .get(url)
       .then((response) => {
         setPicture(response.data);
-        console.log(response.data)
       })
       .catch((err) => {
         setError(err);

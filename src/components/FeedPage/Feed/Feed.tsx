@@ -18,35 +18,44 @@ function Feed({ likedPictures, setLikedPictures }: FeedProps) {
     threshold: 1,
   });
 
+  const inversePictures = [];
+
+  for (let i = pictures.length - 1; i >= 0; i--) {
+    inversePictures.push(pictures[i]);
+  }
+
   useEffect(() => {
     if (inView) {
       fetchMore();
     }
   }, [inView]);
 
-  return (
-    <div className={styles.Feed}>
-      <div className={styles.Pictures}>
-        {pictures?.map((picture: Picture, index: number) =>
-          pictures.length === index + 1 ? (
-            <div ref={ref}>
-              <Card
-                picture={picture}
-                likedPictures={likedPictures}
-                setLikedPictures={setLikedPictures}
-                key={picture.date}
-              />
-            </div>
-          ) : (
+  const picturesMarkup = inversePictures ? (
+    <div className={styles.Pictures}>
+      {inversePictures?.map((picture: Picture, index: number) =>
+        pictures.length === index + 1 ? (
+          <div ref={ref} key={picture.date}>
             <Card
               picture={picture}
               likedPictures={likedPictures}
               setLikedPictures={setLikedPictures}
-              key={picture.date}
             />
-          )
-        )}
-      </div>
+          </div>
+        ) : (
+          <Card
+            picture={picture}
+            likedPictures={likedPictures}
+            setLikedPictures={setLikedPictures}
+            key={picture.date}
+          />
+        )
+      )}
+    </div>
+  ) : null;
+
+  return (
+    <div className={styles.Feed}>
+      {picturesMarkup}
       <div className={styles.NoData}>
         {loading && <TailSpin color="#357cf2" height={30} width={30} />}
         {error && <p>Error fetching the pictures. Please refresh the page.</p>}
