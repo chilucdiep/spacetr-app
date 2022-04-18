@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { TailSpin } from "react-loader-spinner";
 import usePictures from "../../../hooks/usePictures";
-import styles from "./Feed.module.scss";
 
-import { Picture } from "../../../types/Interfaces";
 import Card from "./Card/Card";
 
+import { Picture } from "../../../types/Interfaces";
+import styles from "./Feed.module.scss";
 interface FeedProps {
   likedPictures: Picture[];
   setLikedPictures: any;

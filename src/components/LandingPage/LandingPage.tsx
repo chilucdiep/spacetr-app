@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import usePictures from "../../hooks/usePictures";
-import styles from "./LandingPage.module.scss";
 
-import { Picture } from "../../types/Interfaces";
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
+
+import { Picture } from "../../types/Interfaces";
+import styles from "./LandingPage.module.scss";
 
 interface LandingPageProps {
   lightTheme: boolean;

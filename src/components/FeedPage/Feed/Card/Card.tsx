@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Card.module.scss";
 
-import { Picture } from "../../../../types/Interfaces";
 import { FormControlLabel } from "@mui/material";
 import Checkbox from "@material-ui/core/Checkbox";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
+import { Picture } from "../../../../types/Interfaces";
+import styles from "./Card.module.scss";
 interface CardProps {
   picture: Picture;
   likedPictures: Picture[];

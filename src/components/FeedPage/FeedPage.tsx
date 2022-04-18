@@ -1,13 +1,10 @@
-import { useState } from "react";
-import styles from "./FeedPage.module.scss";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 import Navbar from "../Navbar/Navbar";
 import Liked from "./Liked/Liked";
 import Feed from "./Feed/Feed";
 
-import { Picture } from "../../types/Interfaces";
-import useLocalStorage from "../../hooks/useLocalStorage";
-
+import styles from "./FeedPage.module.scss";
 interface FeedPageProps {
   lightTheme: boolean;
   setLightTheme: any;
