@@ -4,7 +4,7 @@
   height: 350px;
   border-radius: 8px;
   position: sticky;
-  top: 6em;
+  top: 6.5em;
   display: grid;
   grid-template-rows: 18% 78%;
   overflow-y: scroll;
@@ -13,15 +13,20 @@
     display: none;
   }
 
+  @media screen and (min-height: 900px) {
+    top: 11.8vh;
+  }
+
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
     height: 5px;
   }
   &::-webkit-scrollbar-track {
     opacity: 0;
+
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #000000;
+    background-color: #292929;
     border-radius: 8px;
   }
 
