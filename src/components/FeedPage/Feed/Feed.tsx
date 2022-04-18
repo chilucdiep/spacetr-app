@@ -18,12 +18,6 @@ function Feed({ likedPictures, setLikedPictures }: FeedProps) {
     threshold: 1,
   });
 
-  const inversePictures = [];
-
-  for (let i = pictures.length - 1; i >= 0; i--) {
-    inversePictures.push(pictures[i]);
-  }
-
   useEffect(() => {
     if (inView) {
       fetchMore();
@@ -32,9 +26,9 @@ function Feed({ likedPictures, setLikedPictures }: FeedProps) {
 
   console.log(pictures)
 
-  const picturesMarkup = inversePictures ? (
+  const picturesMarkup = pictures ? (
     <div className={styles.Pictures}>
-      {inversePictures?.map((picture: Picture, index: number) =>
+      {pictures?.map((picture: Picture, index: number) =>
         pictures.length === index + 1 ? (
           <div ref={ref} key={picture.date}>
             <Card
