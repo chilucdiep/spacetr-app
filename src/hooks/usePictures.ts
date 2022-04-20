@@ -5,7 +5,7 @@ import moment from "moment";
 import { Picture } from "../types/Interfaces";
 import { APOD_URL, API_KEY } from "./utils";
 
-function usePictures(count: number) {
+export default function usePictures(count: number) {
   const [pictures, setPictures] = useState<Picture[]>([]);
   const inversePictures: Picture[] = [];
 
@@ -31,7 +31,7 @@ function usePictures(count: number) {
     endCount === 0
       ? setEndCount((endCount) => endCount + count + 1)
       : setEndCount((endCount) => endCount + count);
-      
+
     axios
       .get(url)
       .then((response) => {
@@ -51,5 +51,3 @@ function usePictures(count: number) {
 
   return { pictures, loading, error, fetchMore };
 }
-
-export default usePictures;
