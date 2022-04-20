@@ -1,4 +1,4 @@
-### <div align="center"><img src="https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg" width="60%"></div>__
+### <div align="center"><img src="https://github.com/chilucdiep/Spacestagram/blob/main/src/images/LogoLight.svg" width="60%"></div>\
 ### <div align="center"><img src="https://github.com/chilucdiep/Spacestagram/blob/main/src/images/ezgif.com-gif-maker.gif" width="100%"></div>
 
 # About
