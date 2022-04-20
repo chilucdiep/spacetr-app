@@ -1,41 +1,33 @@
-import usePicture from "../../hooks/usePicture";
 import { Link } from "react-router-dom";
-import styles from "./PictureDetailsPage.module.scss";
 
 import Navbar from "../Navbar/Navbar";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-interface PictureDetailsPageProps {
-  lightTheme: boolean;
-  setLightTheme: any;
-}
+import usePicture from "../../hooks/usePicture";
+import { Theme } from "../../types/Interfaces";
+import styles from "./PictureDetailsPage.module.scss";
 
-function PictureDetailsPage({
+export default function PictureDetailsPage({
   lightTheme,
   setLightTheme,
-}: PictureDetailsPageProps) {
+}: Theme) {
   setLightTheme(true);
 
-  const { picture, error } = usePicture(
-    `${String(window.location.href).split("/").pop()}`
-  );
+  const currentDate = `${String(window.location.href).split("/").pop()}`;
+  const { picture, error } = usePicture(currentDate);
 
   const mediaMarkup = picture ? (
     picture.media_type === "image" ? (
       <img src={picture.url} alt="Nasa Space Imagery"></img>
     ) : (
       <div className={styles.Video}>
-        <iframe
-          height="100%"
-          src={picture.url}
-          title={picture.title}
-        ></iframe>
+        <iframe height="100%" src={picture.url} title={picture.title}></iframe>
       </div>
     )
   ) : null;
 
   const pictureContentMarkup = picture ? (
-    <div className={styles.PictureDetailsContainer}>
+    <section className={styles.PictureDetailsContainer}>
       {mediaMarkup}
       <div className={styles.Text}>
         <h2>{picture.title}</h2>
@@ -47,8 +39,16 @@ function PictureDetailsPage({
           <p>{picture.explanation}</p>
         </div>
       </div>
-    </div>
+    </section>
   ) : null;
+
+  const picturePageMarkup = error ? (
+    <p>Error fetching your picture. Please refresh the page.</p>
+  ) : (
+    <section className={styles.PictureDetailsPage}>
+      {pictureContentMarkup}
+    </section>
+  );
 
   return (
     <>
@@ -59,10 +59,7 @@ function PictureDetailsPage({
           <h3>Feed</h3>
         </div>
       </Link>
-      <div className={styles.PictureDetailsPage}>{pictureContentMarkup}</div>
-      {error && <p>Error fetching your picture. Please refresh the page.</p>}
+      {picturePageMarkup}
     </>
   );
 }
-
-export default PictureDetailsPage;

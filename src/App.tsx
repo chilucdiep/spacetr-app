@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Routes, Route, HashRouter } from "react-router-dom";
-import styles from "./App.module.scss";
 
 import LandingPage from "./components/LandingPage/LandingPage";
 import FeedPage from "./components/FeedPage/FeedPage";
 import PictureDetailsPage from "./components/PictureDetailsPage/PictureDetailsPage";
 
-function App() {
+import styles from "./App.module.scss";
+
+export default function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);
 
   const root = document.documentElement;
@@ -50,5 +51,3 @@ function App() {
     </HashRouter>
   );
 }
-
-export default App;

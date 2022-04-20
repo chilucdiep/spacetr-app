@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { TailSpin } from "react-loader-spinner";
-import usePictures from "../../../hooks/usePictures";
 
 import Card from "./Card/Card";
 
+import usePictures from "../../../hooks/usePictures";
 import { Picture } from "../../../types/Interfaces";
 import styles from "./Feed.module.scss";
 interface FeedProps {
@@ -12,7 +12,7 @@ interface FeedProps {
   setLikedPictures: any;
 }
 
-function Feed({ likedPictures, setLikedPictures }: FeedProps) {
+export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
   const { pictures, loading, error, fetchMore } = usePictures(8);
   const { ref, inView } = useInView({
     threshold: 1,
@@ -24,11 +24,9 @@ function Feed({ likedPictures, setLikedPictures }: FeedProps) {
     }
   }, [inView]);
 
-  console.log(pictures)
-
   const picturesMarkup = pictures ? (
     <div className={styles.Pictures}>
-      {pictures?.map((picture: Picture, index: number) =>
+      {pictures.map((picture: Picture, index: number) =>
         pictures.length === index + 1 ? (
           <div ref={ref} key={picture.date}>
             <Card
@@ -49,15 +47,17 @@ function Feed({ likedPictures, setLikedPictures }: FeedProps) {
     </div>
   ) : null;
 
-  return (
-    <div className={styles.Feed}>
-      {picturesMarkup}
-      <div className={styles.NoData}>
-        {loading && <TailSpin color="#357cf2" height={30} width={30} />}
-        {error && <p>Error fetching the pictures. Please refresh the page.</p>}
-      </div>
+  const noDataMarkup = (
+    <div className={styles.NoData}>
+      {loading && <TailSpin color="#357cf2" height={30} width={30} />}
+      {error && <p>Error fetching the pictures. Please refresh the page.</p>}
     </div>
   );
-}
 
-export default Feed;
+  return (
+    <section className={styles.Feed}>
+      {picturesMarkup}
+      {noDataMarkup}
+    </section>
+  );
+}

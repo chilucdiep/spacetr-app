@@ -1,18 +1,13 @@
 import { Link } from "react-router-dom";
-import usePictures from "../../hooks/usePictures";
 
 import Navbar from "../Navbar/Navbar";
 import Button from "../Button/Button";
 
-import { Picture } from "../../types/Interfaces";
+import usePictures from "../../hooks/usePictures";
+import { Picture, Theme } from "../../types/Interfaces";
 import styles from "./LandingPage.module.scss";
 
-interface LandingPageProps {
-  lightTheme: boolean;
-  setLightTheme: any;
-}
-
-function LandingPage({ lightTheme, setLightTheme }: LandingPageProps) {
+export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
   setLightTheme(false);
 
   const { pictures } = usePictures(5);
@@ -20,8 +15,8 @@ function LandingPage({ lightTheme, setLightTheme }: LandingPageProps) {
   return (
     <>
       <Navbar lightTheme={lightTheme} />
-      <div className={styles.LandingPage}>
-        <div className={styles.Header}>
+      <section className={styles.LandingPage}>
+        <section className={styles.Header}>
           <h1>
             Discover our <span>universe</span>
           </h1>
@@ -31,18 +26,20 @@ function LandingPage({ lightTheme, setLightTheme }: LandingPageProps) {
           <Link to="/feed" className={styles.Button}>
             <Button label="Explore" />
           </Link>
-        </div>
-        <div className={styles.Bottom}>
+        </section>
+        <section className={styles.Bottom}>
           <div className={styles.Overlay}></div>
           <div className={styles.Images}>
-            {pictures?.map((picture: Picture, key: number) => (
-              <img src={picture.hdurl} alt="Nasa Imagery" key={key}></img>
+            {pictures?.map((picture: Picture) => (
+              <img
+                src={picture.hdurl}
+                alt="Nasa Imagery"
+                key={picture.date}
+              ></img>
             ))}
           </div>
-        </div>
-      </div>
+        </section>
+      </section>
     </>
   );
 }
-
-export default LandingPage;
