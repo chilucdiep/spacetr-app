@@ -1,13 +1,35 @@
 .Liked {
-  background-color: #141417;
+  // background-color: #141417;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
   margin-right: 1em;
-  height: 350px;
+  height: 82vh;
   border-radius: 8px;
   position: sticky;
   top: 6.5em;
   display: grid;
-  grid-template-rows: 18% 78%;
+  grid-template-rows: 10% 78%;
   overflow-y: scroll;
+
+  ::before {
+    box-sizing: border-box;
+    content: "";
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    inset: 0px;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.01)
+    );
+    -webkit-mask: linear-gradient(black, black) content-box content-box,
+      linear-gradient(black, black);
+    -webkit-mask-composite: xor;
+  }
 
   @media screen and (max-width: 900px) {
     display: none;
@@ -17,21 +39,22 @@
     top: 11.8vh;
   }
 
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-  &::-webkit-scrollbar-track {
-    opacity: 0;
-
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #292929;
-    border-radius: 8px;
-  }
+  // scrollbar
+  // &::-webkit-scrollbar {
+  //   width: 5px;
+  //   height: 5px;
+  // }
+  // &::-webkit-scrollbar-track {
+  //   opacity: 0;
+  // }
+  // &::-webkit-scrollbar-thumb {
+  //   background-color: #292929;
+  //   border-radius: 8px;
+  // }
 
   h4 {
     padding: 1.2em 20px;
+    align-self: center;
   }
 
   h2 {
@@ -47,14 +70,16 @@
     align-self: start;
     justify-self: start;
     width: 100%;
+    border-top: 1px solid #333;
 
     .LikedPicture {
-      border: 1px solid #333;
+      border-bottom: 1px solid #333;
       border-width: 1px 0;
-      padding: .5em 20px;
+      padding: 0.8em 20px;
       display: flex;
       align-items: center;
       overflow-y: hidden;
+      background-color: rgba(255, 255, 255, 0.025);
 
       img {
         width: 50px;
