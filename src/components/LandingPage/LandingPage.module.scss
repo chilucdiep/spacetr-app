@@ -13,6 +13,7 @@
 
     span {
       color: #357cf2;
+      display: inline-block;
     }
 
     .Button {
@@ -49,21 +50,17 @@
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 1em;
 
-      // a {
-      //   display: block;
-      // }
-
       @media screen and (max-width: 700px) {
         grid-template-columns: 1fr 1fr 1fr;
 
-        a {
+        .Image {
           &:nth-child(4n + 1) {
             display: none;
           }
         }
       }
 
-      a {
+      .Image {
         &:nth-child(2n + 2) {
           margin-top: 5em;
         }
