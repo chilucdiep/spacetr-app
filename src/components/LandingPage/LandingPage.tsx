@@ -31,11 +31,13 @@ export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
           <div className={styles.Overlay}></div>
           <div className={styles.Images}>
             {pictures?.map((picture: Picture) => (
-              <img
-                src={picture.hdurl}
-                alt="Nasa Imagery"
-                key={picture.date}
-              ></img>
+              <Link to={`/feed/${picture.date}`}>
+                <img
+                  src={picture.hdurl}
+                  alt="Nasa Imagery"
+                  key={picture.date}
+                ></img>
+              </Link>
             ))}
           </div>
         </section>

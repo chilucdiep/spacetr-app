@@ -49,13 +49,27 @@
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       grid-gap: 1em;
 
+      // a {
+      //   display: block;
+      // }
+
       @media screen and (max-width: 700px) {
         grid-template-columns: 1fr 1fr 1fr;
 
-        img {
+        a {
           &:nth-child(4n + 1) {
             display: none;
           }
+        }
+      }
+
+      a {
+        &:nth-child(2n + 2) {
+          margin-top: 5em;
+        }
+
+        &:nth-child(3) {
+          margin-top: 10em;
         }
       }
 
@@ -64,14 +78,6 @@
         height: 55vh;
         object-fit: cover;
         border-radius: 8px;
-
-        &:nth-child(2n + 2) {
-          margin-top: 5em;
-        }
-
-        &:nth-child(3) {
-          margin-top: 10em;
-        }
       }
     }
   }
