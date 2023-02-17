@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { duration } from "moment";
+import Delete from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
 import { Picture } from "../../../types/Interfaces";
@@ -24,15 +24,18 @@ export default function Liked({ likedPictures }: LikedProps) {
           animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
           exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
         >
-          <Link to={`/feed/${picture.date}`}>
-            <img src={picture.url} alt="Nasa Space Imagery"></img>
-          </Link>
-          <div className={styles.Text}>
+          <div className={styles.Left}>
             <Link to={`/feed/${picture.date}`}>
-              <h5>{picture.title}</h5>
+              <img src={picture.url} alt="Nasa Space Imagery"></img>
             </Link>
-            <p>{picture.date}</p>
+            <div className={styles.Text}>
+              <Link to={`/feed/${picture.date}`}>
+                <h5>{picture.title}</h5>
+              </Link>
+              <p>{picture.date}</p>
+            </div>
           </div>
+          <Delete />
         </motion.div>
       ))}
     </motion.div>
