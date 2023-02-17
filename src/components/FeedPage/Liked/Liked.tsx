@@ -6,9 +6,10 @@ import { Picture } from "../../../types/Interfaces";
 import styles from "./Liked.module.scss";
 interface LikedProps {
   likedPictures: Picture[];
+  setLikedPictures: any;
 }
 
-export default function Liked({ likedPictures }: LikedProps) {
+export default function Liked({ likedPictures, setLikedPictures }: LikedProps) {
   const likedPicturesMarkup = likedPictures ? (
     <motion.div
       className={styles.LikedPictures}
@@ -35,7 +36,9 @@ export default function Liked({ likedPictures }: LikedProps) {
               <p>{picture.date}</p>
             </div>
           </div>
-          <Delete />
+          <button onClick={() => removeLikedPictures(picture)}>
+            <Delete />
+          </button>
         </motion.div>
       ))}
     </motion.div>
@@ -60,4 +63,11 @@ export default function Liked({ likedPictures }: LikedProps) {
       <AnimatePresence>{hasLikedPicturesMarkup}</AnimatePresence>
     </section>
   );
+
+  function removeLikedPictures(picture: Picture) {
+    const updatedLikedPictures = likedPictures.filter(
+      (likedPicture) => likedPicture.date !== picture.date
+    );
+    setLikedPictures(updatedLikedPictures);
+  }
 }

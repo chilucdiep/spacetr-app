@@ -18,7 +18,10 @@ export default function FeedPage({ lightTheme, setLightTheme }: Theme) {
     <>
       <Navbar lightTheme={lightTheme} />
       <section className={styles.FeedPage}>
-        <Liked likedPictures={likedPictures} />
+        <Liked
+          likedPictures={likedPictures}
+          setLikedPictures={setLikedPictures}
+        />
         <Feed
           likedPictures={likedPictures}
           setLikedPictures={setLikedPictures}
