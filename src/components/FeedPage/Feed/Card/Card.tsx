@@ -15,7 +15,9 @@ interface CardProps {
 }
 
 function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
-  const [checked, setChecked] = useState<boolean>(true);
+  const isLiked = likedPictures?.some(
+    (likedPicture: Picture) => likedPicture.date === picture.date
+  );
 
   const mediaMarkup =
     picture.media_type === "image" ? (
@@ -42,6 +44,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
                 icon={<FavoriteBorderIcon style={{ color: "white" }} />}
                 checkedIcon={<FavoriteIcon />}
                 name="checkedH"
+                checked={isLiked}
                 onClick={handleLikedPictures}
               />
             }
@@ -61,14 +64,15 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
   return <>{cardMarkup}</>;
 
   function handleLikedPictures() {
-    setChecked((checked) => !checked);
-    if (checked) {
-      setLikedPictures([...likedPictures, picture]);
-    } else {
+    // picture.liked = !picture.liked;
+
+    if (isLiked) {
       const updatedLikedPictures = likedPictures.filter(
         (likedPicture) => likedPicture.date !== picture.date
       );
       setLikedPictures(updatedLikedPictures);
+    } else {
+      setLikedPictures([...likedPictures, picture]);
     }
   }
 }

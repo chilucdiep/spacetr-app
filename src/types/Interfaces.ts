@@ -7,6 +7,7 @@ export interface Picture {
   title: string;
   url: string;
   copyright?: string;
+  liked?: boolean;
 }
 
 export interface Theme {

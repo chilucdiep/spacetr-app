@@ -26,7 +26,7 @@ export default function Liked({ likedPictures, setLikedPictures }: LikedProps) {
           exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
         >
           <div className={styles.Left}>
-            <Link to={`/feed/${picture.date}`}>
+            <Link to={`/feed/${picture.date}`} className={styles.LeftImg}>
               <img src={picture.url} alt="Nasa Space Imagery"></img>
             </Link>
             <div className={styles.Text}>
@@ -68,6 +68,7 @@ export default function Liked({ likedPictures, setLikedPictures }: LikedProps) {
     const updatedLikedPictures = likedPictures.filter(
       (likedPicture) => likedPicture.date !== picture.date
     );
+    console.log(updatedLikedPictures);
     setLikedPictures(updatedLikedPictures);
   }
 }
