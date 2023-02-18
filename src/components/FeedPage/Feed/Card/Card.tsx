@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { FormControlLabel } from "@mui/material";
@@ -64,12 +63,11 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
   return <>{cardMarkup}</>;
 
   function handleLikedPictures() {
-    // picture.liked = !picture.liked;
-
     if (isLiked) {
       const updatedLikedPictures = likedPictures.filter(
         (likedPicture) => likedPicture.date !== picture.date
       );
+
       setLikedPictures(updatedLikedPictures);
     } else {
       setLikedPictures([...likedPictures, picture]);

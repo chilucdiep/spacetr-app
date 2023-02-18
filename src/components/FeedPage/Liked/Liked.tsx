@@ -68,7 +68,7 @@ export default function Liked({ likedPictures, setLikedPictures }: LikedProps) {
     const updatedLikedPictures = likedPictures.filter(
       (likedPicture) => likedPicture.date !== picture.date
     );
-    console.log(updatedLikedPictures);
+
     setLikedPictures(updatedLikedPictures);
   }
 }
