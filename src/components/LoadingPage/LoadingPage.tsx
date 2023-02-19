@@ -42,15 +42,7 @@ export default function LoadingPage() {
         initial="hidden"
         animate="show"
       >
-        <motion.circle
-          cx="13"
-          cy="13"
-          r="13"
-          fill="#357CF2"
-          //   variants={circleVariant}
-          //   initial="hidden"
-          //   animate="show"
-        />
+        <motion.circle cx="13" cy="13" r="13" fill="#357CF2" />
         <motion.rect
           x="5"
           y="5"

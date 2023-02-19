@@ -6,6 +6,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import usePicture from "../../hooks/usePicture";
 import { Theme } from "../../types/Interfaces";
 import styles from "./PictureDetailsPage.module.scss";
+import { motion } from "framer-motion";
 
 export default function PictureDetailsPage({
   lightTheme,
@@ -15,6 +16,15 @@ export default function PictureDetailsPage({
 
   const currentDate = `${String(window.location.href).split("/").pop()}`;
   const { picture, error } = usePicture(currentDate);
+
+  const contentVariant = {
+    hidden: { y: 80, opacity: 0 },
+    show: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.3 },
+    },
+  };
 
   const mediaMarkup = picture ? (
     picture.media_type === "image" ? (
@@ -27,7 +37,12 @@ export default function PictureDetailsPage({
   ) : null;
 
   const pictureContentMarkup = picture ? (
-    <section className={styles.PictureDetailsContainer}>
+    <motion.section
+      className={styles.PictureDetailsContainer}
+      variants={contentVariant}
+      initial="hidden"
+      animate="show"
+    >
       {mediaMarkup}
       <div className={styles.Text}>
         <h2>{picture.title}</h2>
@@ -39,7 +54,7 @@ export default function PictureDetailsPage({
           <p>{picture.explanation}</p>
         </div>
       </div>
-    </section>
+    </motion.section>
   ) : null;
 
   const picturePageMarkup = error ? (
