@@ -7,28 +7,30 @@ import usePictures from "../../hooks/usePictures";
 import { Picture, Theme } from "../../types/Interfaces";
 import styles from "./LandingPage.module.scss";
 import { motion } from "framer-motion";
+import LoadingPage from "../LoadingPage/LoadingPage";
 
 export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
   setLightTheme(false);
-  const { pictures } = usePictures(5);
+  const { pictures, loading } = usePictures(5);
 
   const containerVariant = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.9,
+        delay: 0.1,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const listItemVariant = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 250, opacity: 0 },
     show: {
       y: 10,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.9,
       },
     },
   };
@@ -47,46 +49,56 @@ export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
 
   return (
     <>
-      <Navbar lightTheme={lightTheme} />
-      <section className={styles.LandingPage}>
-        <section className={styles.Header}>
-          <h1>
-            Discover our{" "}
-            <motion.span variants={textVariant} initial="hidden" animate="show">
-              universe
-            </motion.span>
-          </h1>
-          <h2>
-            with <strong>NASA's</strong> beautiful imagery
-          </h2>
-          <Link to="/feed" className={styles.Button}>
-            <Button label="Explore" />
-          </Link>
-        </section>
-        <section className={styles.Bottom}>
-          <div className={styles.Overlay}></div>
-          {pictures && (
-            <motion.div
-              className={styles.Images}
-              variants={containerVariant}
-              initial="hidden"
-              animate="show"
-            >
-              {pictures.map((picture: Picture) => (
-                <motion.div
-                  className={styles.Image}
-                  key={picture.date}
-                  variants={listItemVariant}
+      {loading ? (
+        <LoadingPage />
+      ) : (
+        <>
+          <Navbar lightTheme={lightTheme} />
+          <section className={styles.LandingPage}>
+            <section className={styles.Header}>
+              <h1>
+                Discover our{" "}
+                <motion.span
+                  variants={textVariant}
+                  initial="hidden"
+                  animate="show"
                 >
-                  <Link to={`/feed/${picture.date}`}>
-                    <img src={picture.hdurl} alt="Nasa Imagery"></img>
-                  </Link>
+                  universe
+                </motion.span>
+              </h1>
+              <h2>
+                with <strong>NASA's</strong> beautiful imagery
+              </h2>
+              <Link to="/feed" className={styles.Button}>
+                <Button label="Explore" />
+              </Link>
+            </section>
+            <section className={styles.Bottom}>
+              <div className={styles.Overlay}></div>
+              {pictures && (
+                <motion.div
+                  className={styles.Images}
+                  variants={containerVariant}
+                  initial="hidden"
+                  animate="show"
+                >
+                  {pictures.map((picture: Picture) => (
+                    <motion.div
+                      className={styles.Image}
+                      key={picture.date}
+                      variants={listItemVariant}
+                    >
+                      <Link to={`/feed/${picture.date}`}>
+                        <img src={picture.hdurl} alt="Nasa Imagery"></img>
+                      </Link>
+                    </motion.div>
+                  ))}
                 </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </section>
-      </section>
+              )}
+            </section>
+          </section>
+        </>
+      )}
     </>
   );
 }
