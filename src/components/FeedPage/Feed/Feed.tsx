@@ -7,6 +7,8 @@ import Card from "./Card/Card";
 import usePictures from "../../../hooks/usePictures";
 import { Picture } from "../../../types/Interfaces";
 import styles from "./Feed.module.scss";
+import usePicture from "../../../hooks/usePicture";
+import moment from "moment";
 interface FeedProps {
   likedPictures: Picture[];
   setLikedPictures: any;
@@ -14,6 +16,9 @@ interface FeedProps {
 
 export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
   const { pictures, loading, error, fetchMore } = usePictures(8);
+  const currentDate = moment().format("YYYY-MM-DD");
+  const { picture } = usePicture(currentDate);
+  console.log(currentDate);
   const { ref, inView } = useInView({
     threshold: 1,
   });
@@ -27,12 +32,16 @@ export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
   const picturesMarkup = pictures ? (
     <>
       <div className={styles.OftheDay}>
-        <h3 className={styles.Title}>Astronomy picture of the day</h3>
-        <Card
-          picture={pictures[0]}
-          likedPictures={likedPictures}
-          setLikedPictures={setLikedPictures}
-        />
+        {picture ? (
+          <>
+            <h3 className={styles.Title}>Astronomy picture of the day</h3>
+            <Card
+              picture={picture}
+              likedPictures={likedPictures}
+              setLikedPictures={setLikedPictures}
+            />
+          </>
+        ) : null}
       </div>
       <h3 className={styles.Title}>Our previous pictures</h3>
       <div className={styles.Pictures}>
