@@ -16,9 +16,10 @@ interface FeedProps {
 
 export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
   const { pictures, loading, error, fetchMore } = usePictures(8);
+
   const currentDate = moment().format("YYYY-MM-DD");
   const { picture } = usePicture(currentDate);
-  console.log(currentDate);
+
   const { ref, inView } = useInView({
     threshold: 1,
   });
