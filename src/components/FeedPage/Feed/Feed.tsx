@@ -47,7 +47,7 @@ export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
       <h3 className={styles.Title}>Our previous pictures</h3>
       <div className={styles.Pictures}>
         {pictures.slice(1).map((picture: Picture, index: number) =>
-          pictures.length === index + 1 ? (
+          pictures.length === index + 2 ? (
             <div ref={ref} key={picture.date}>
               <Card
                 picture={picture}
