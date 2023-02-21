@@ -32,18 +32,6 @@ export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
 
   const picturesMarkup = pictures ? (
     <>
-      <div className={styles.OftheDay}>
-        {picture ? (
-          <>
-            <h3 className={styles.Title}>Astronomy picture of the day</h3>
-            <Card
-              picture={picture}
-              likedPictures={likedPictures}
-              setLikedPictures={setLikedPictures}
-            />
-          </>
-        ) : null}
-      </div>
       <h3 className={styles.Title}>Our previous pictures</h3>
       <div className={styles.Pictures}>
         {pictures.slice(1).map((picture: Picture, index: number) =>
@@ -68,6 +56,21 @@ export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
     </>
   ) : null;
 
+  const picOfDayMarkup = (
+    <div className={styles.OftheDay}>
+      {picture ? (
+        <>
+          <h3 className={styles.Title}>Astronomy picture of the day</h3>
+          <Card
+            picture={picture}
+            likedPictures={likedPictures}
+            setLikedPictures={setLikedPictures}
+          />
+        </>
+      ) : null}
+    </div>
+  );
+
   const noDataMarkup = (
     <div className={styles.NoData}>
       {loading && <TailSpin color="#357cf2" height={30} width={30} />}
@@ -77,6 +80,7 @@ export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
 
   return (
     <section className={styles.Feed}>
+      {picOfDayMarkup}
       {picturesMarkup}
       {noDataMarkup}
     </section>
