@@ -25,26 +25,37 @@ export default function Feed({ likedPictures, setLikedPictures }: FeedProps) {
   }, [inView]);
 
   const picturesMarkup = pictures ? (
-    <div className={styles.Pictures}>
-      {pictures.map((picture: Picture, index: number) =>
-        pictures.length === index + 1 ? (
-          <div ref={ref} key={picture.date}>
+    <>
+      <div className={styles.OftheDay}>
+        <h3 className={styles.Title}>Astronomy picture of the day</h3>
+        <Card
+          picture={pictures[0]}
+          likedPictures={likedPictures}
+          setLikedPictures={setLikedPictures}
+        />
+      </div>
+      <h3 className={styles.Title}>Our previous pictures</h3>
+      <div className={styles.Pictures}>
+        {pictures.slice(1).map((picture: Picture, index: number) =>
+          pictures.length === index + 1 ? (
+            <div ref={ref} key={picture.date}>
+              <Card
+                picture={picture}
+                likedPictures={likedPictures}
+                setLikedPictures={setLikedPictures}
+              />
+            </div>
+          ) : (
             <Card
               picture={picture}
               likedPictures={likedPictures}
               setLikedPictures={setLikedPictures}
+              key={picture.date}
             />
-          </div>
-        ) : (
-          <Card
-            picture={picture}
-            likedPictures={likedPictures}
-            setLikedPictures={setLikedPictures}
-            key={picture.date}
-          />
-        )
-      )}
-    </div>
+          )
+        )}
+      </div>
+    </>
   ) : null;
 
   const noDataMarkup = (

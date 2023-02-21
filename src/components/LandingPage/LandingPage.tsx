@@ -89,7 +89,7 @@ export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
                       variants={listItemVariant}
                     >
                       <Link to={`/feed/${picture.date}`}>
-                        <img src={picture.hdurl} alt="Nasa Imagery"></img>
+                        <img src={picture.url} alt="Nasa Imagery"></img>
                       </Link>
                     </motion.div>
                   ))}
