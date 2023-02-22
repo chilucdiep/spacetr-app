@@ -7,13 +7,16 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 import { Picture } from "../../../../types/Interfaces";
 import styles from "./Card.module.scss";
+import { useContext } from "react";
+import { LikedPictureContext } from "../../FeedPage";
+
 interface CardProps {
   picture: Picture;
-  likedPictures: Picture[];
-  setLikedPictures: any;
 }
 
-function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
+function Card({ picture }: CardProps) {
+  const [likedPictures, setLikedPictures] = useContext(LikedPictureContext);
+
   const isLiked = likedPictures?.some(
     (likedPicture: Picture) => likedPicture.date === picture.date
   );
@@ -65,7 +68,7 @@ function Card({ picture, likedPictures, setLikedPictures }: CardProps) {
   function handleLikedPictures() {
     if (isLiked) {
       const updatedLikedPictures = likedPictures.filter(
-        (likedPicture) => likedPicture.date !== picture.date
+        (likedPicture: Picture) => likedPicture.date !== picture.date
       );
 
       setLikedPictures(updatedLikedPictures);

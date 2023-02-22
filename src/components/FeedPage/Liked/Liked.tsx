@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 import { Picture } from "../../../types/Interfaces";
 import styles from "./Liked.module.scss";
-interface LikedProps {
-  likedPictures: Picture[];
-  setLikedPictures: any;
-}
+import { useContext } from "react";
+import { LikedPictureContext } from "../FeedPage";
 
-export default function Liked({ likedPictures, setLikedPictures }: LikedProps) {
+export default function Liked() {
+  const [likedPictures, setLikedPictures] = useContext(LikedPictureContext);
+
   const likedPicturesMarkup = likedPictures ? (
     <motion.div
       className={styles.LikedPictures}
@@ -66,7 +66,7 @@ export default function Liked({ likedPictures, setLikedPictures }: LikedProps) {
 
   function removeLikedPictures(picture: Picture) {
     const updatedLikedPictures = likedPictures.filter(
-      (likedPicture) => likedPicture.date !== picture.date
+      (likedPicture: Picture) => likedPicture.date !== picture.date
     );
 
     setLikedPictures(updatedLikedPictures);
