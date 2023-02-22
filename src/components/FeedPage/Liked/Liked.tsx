@@ -47,9 +47,9 @@ export default function Liked() {
   const hasLikedPicturesMarkup =
     likedPictures.length === 0 ? (
       <motion.h2
-        initial={{ opacity: 1, y: 10 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
-        exit={{ opacity: 0, y: 10, transition: { duration: 0.3 } }}
+        exit={{ opacity: 0, y: 15, transition: { duration: 0.3 } }}
       >
         No picture liked
       </motion.h2>

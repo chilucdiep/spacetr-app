@@ -26,9 +26,20 @@ export default function Feed() {
     }
   }, [inView]);
 
+  const picOfDayMarkup = (
+    <div className={styles.OftheDay}>
+      {picture ? (
+        <>
+          <h3 className={styles.Title}>Astronomy picture of the day</h3>
+          <Card picture={picture} />
+        </>
+      ) : null}
+    </div>
+  );
+
   const picturesMarkup = pictures ? (
-    <>
-      <h3 className={styles.Title}>Our previous pictures</h3>
+    <div>
+      {picture ? <h3 className={styles.Title}>Our previous pictures</h3> : null}
       <div className={styles.Pictures}>
         {pictures.slice(1).map((picture: Picture, index: number) =>
           pictures.length === index + 2 ? (
@@ -40,19 +51,8 @@ export default function Feed() {
           )
         )}
       </div>
-    </>
-  ) : null;
-
-  const picOfDayMarkup = (
-    <div className={styles.OftheDay}>
-      {picture ? (
-        <>
-          <h3 className={styles.Title}>Astronomy picture of the day</h3>
-          <Card picture={picture} />
-        </>
-      ) : null}
     </div>
-  );
+  ) : null;
 
   const noDataMarkup = (
     <div className={styles.NoData}>

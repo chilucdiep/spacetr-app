@@ -9,6 +9,7 @@ import { Picture } from "../../../../types/Interfaces";
 import styles from "./Card.module.scss";
 import { useContext } from "react";
 import { LikedPictureContext } from "../../FeedPage";
+import { motion } from "framer-motion";
 
 interface CardProps {
   picture: Picture;
@@ -29,7 +30,11 @@ function Card({ picture }: CardProps) {
     );
 
   const cardMarkup = picture ? (
-    <div className={styles.Card}>
+    <motion.div
+      className={styles.Card}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0, transition: { duration: 0.4 } }}
+    >
       <div className={styles.Header}>
         <div className={styles.Information}>
           <h3>{picture.title}</h3>
@@ -60,7 +65,7 @@ function Card({ picture }: CardProps) {
         <h2>Read more</h2>
         {mediaMarkup}
       </Link>
-    </div>
+    </motion.div>
   ) : null;
 
   return <>{cardMarkup}</>;
