@@ -17,31 +17,35 @@ export default function Navbar({ lightTheme }: NavbarProps) {
     ></img>
   );
 
+  const navLinksMarkup = (
+    <div className={styles.NavLinks}>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/chilucdiep/Spacestagram"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Code
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.figma.com/file/dkV2MEJPPmGWdl1vvfaPs4/Spacestagram?node-id=0%3A1"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Design
+          </a>
+        </li>
+      </ul>
+    </div>
+  );
+
   return (
     <nav className={styles.Navbar}>
       <Link to="/">{logoMarkup}</Link>
-      <div className={styles.NavLinks}>
-        <ul>
-          <li>
-            <a
-              href="https://github.com/chilucdiep/Spacestagram"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Code
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.figma.com/file/dkV2MEJPPmGWdl1vvfaPs4/Spacestagram?node-id=0%3A1"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Design
-            </a>
-          </li>
-        </ul>
-      </div>
+      {navLinksMarkup}
     </nav>
   );
 }
