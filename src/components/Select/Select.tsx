@@ -4,7 +4,7 @@ import { SelectOption } from "../../types/Interfaces";
 import Button from "../Button/Button";
 
 type SelectPropsBase = {
-  maxWidth?: string;
+  placeholder: string;
   options: SelectOption[];
 };
 
@@ -16,6 +16,7 @@ interface SingleSelectProps extends SelectPropsBase {
 export function Select({
   onChange,
   options,
+  placeholder,
   selectedOption,
 }: SingleSelectProps) {
   const [isOpen, setisOpen] = useState(false);
@@ -32,16 +33,19 @@ export function Select({
   }, [isOpen]);
 
   const valueMarkup = (
-    <span className={styles.Value}>{selectedOption?.label}</span>
+    <span className={styles.Value}>
+      {selectedOption ? selectedOption.label : placeholder}
+    </span>
   );
 
   const clearButtonMarkup = (
-    <Button
-      label="&times;"
+    <button
       onClick={(e) => {
         handleClearValue(e);
       }}
-    />
+    >
+      &times;
+    </button>
   );
 
   const optionsMarkup = options.map((option, index) => (

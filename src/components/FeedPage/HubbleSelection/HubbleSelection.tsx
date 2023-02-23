@@ -1,6 +1,7 @@
 // import useHubblePicture from "../../../hooks/useHubblePicture";
 
 import globals from "../../../App.module.scss";
+import styles from "./HubbleSelection.module.scss";
 import moment from "moment";
 import { useState } from "react";
 import { SelectOption } from "../../../types/Interfaces";
@@ -24,9 +25,9 @@ export default function HubbleSelection() {
     .months()
     .map((month, idx) => ({ label: month, value: idx + 1 }));
 
-  const [selectedMonth, setSelectedMonth] = useState<SelectOption | undefined>(
-    monthsOptions[0]
-  );
+  const [selectedMonth, setSelectedMonth] = useState<
+    SelectOption | undefined
+  >();
 
   const daysOptions = getDaysinMonths();
   const [selectedDay, setSelectedDay] = useState<SelectOption | undefined>();
@@ -35,6 +36,7 @@ export default function HubbleSelection() {
     <Select
       onChange={(option: SelectOption | undefined) => setSelectedMonth(option)}
       options={monthsOptions}
+      placeholder="Select Month"
       selectedOption={selectedMonth}
     />
   );
@@ -43,6 +45,7 @@ export default function HubbleSelection() {
     <Select
       onChange={(option: SelectOption | undefined) => setSelectedDay(option)}
       options={daysOptions}
+      placeholder="Select Day"
       selectedOption={selectedDay}
     />
   );
@@ -52,7 +55,7 @@ export default function HubbleSelection() {
       <h3 className={globals.SectionTitle}>
         What Did Hubble See on Your Birthday?
       </h3>
-      <div>
+      <div className={styles.SelectContainer}>
         {monthSelectComponentMarkup}
         {daySelectComponentMarkup}
       </div>
