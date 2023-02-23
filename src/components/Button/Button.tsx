@@ -2,7 +2,7 @@ import styles from "./Button.module.scss";
 
 interface ButtonProps {
   label: string;
-  onClick?(): void;
+  onClick?(e?: any): void;
 }
 
 export default function Button({ label, onClick }: ButtonProps) {
