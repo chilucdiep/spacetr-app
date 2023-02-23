@@ -1,13 +1,12 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Picture } from "../types/Interfaces";
 
-export default function useLocalStorage(
+export default function useLocalStorage<T>(
   key: string,
-  defaultValue: Picture[]
-): [Picture[], Dispatch<SetStateAction<Picture[]>>] {
-  const [value, setValue] = useState<Picture[]>(() => {
+  defaultValue: T
+): [T, Dispatch<SetStateAction<T>>] {
+  const [value, setValue] = useState<T>(() => {
     const jsonValue = localStorage.getItem(key);
-    if (jsonValue !== null) return JSON.parse(jsonValue);
+    if (jsonValue !== null) return JSON.parse(jsonValue) as T;
     return defaultValue;
   });
 

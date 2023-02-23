@@ -12,18 +12,19 @@ export default function usePicture(date: string) {
   const url = `${APOD_URL}?api_key=${API_KEY}&date=${date}`;
 
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get(url)
-      .then((response) => {
+    async function fetchData() {
+      setLoading(true);
+
+      try {
+        const response = await axios.get(url);
         setPicture(response.data);
-      })
-      .catch((err) => {
+      } catch (err) {
         setError(err);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    }
+    fetchData();
   }, [url]);
 
   return { picture, loading, error };

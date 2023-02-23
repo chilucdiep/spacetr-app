@@ -9,14 +9,6 @@ interface NavbarProps {
 }
 
 export default function Navbar({ lightTheme }: NavbarProps) {
-  const logoMarkup = (
-    <img
-      src={lightTheme ? LogoLight : LogoDark}
-      alt="Logo"
-      className={styles.Logo}
-    ></img>
-  );
-
   const navLinksMarkup = (
     <div className={styles.NavLinks}>
       <ul>
@@ -44,7 +36,9 @@ export default function Navbar({ lightTheme }: NavbarProps) {
 
   return (
     <nav className={styles.Navbar}>
-      <Link to="/">{logoMarkup}</Link>
+      <Link to="/" className={styles.Logo}>
+        <img src={lightTheme ? LogoLight : LogoDark} alt="Logo" />
+      </Link>
       {navLinksMarkup}
     </nav>
   );

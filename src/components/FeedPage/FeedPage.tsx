@@ -16,7 +16,9 @@ export default function FeedPage({ lightTheme, setLightTheme }: Theme) {
   setLightTheme(false);
 
   return (
-    <LikedPictureContext.Provider value={useLocalStorage("likedPictures", [])}>
+    <LikedPictureContext.Provider
+      value={useLocalStorage<Picture[]>("likedPictures", [])}
+    >
       <Navbar lightTheme={lightTheme} />
       <section className={styles.FeedPage}>
         <section>

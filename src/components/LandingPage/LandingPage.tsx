@@ -85,22 +85,18 @@ export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
     </motion.div>
   ) : null;
 
+  if (loading) return <LoadingPage />;
+
   return (
     <>
-      {loading ? (
-        <LoadingPage />
-      ) : (
-        <>
-          <Navbar lightTheme={lightTheme} />
-          <section className={styles.LandingPage}>
-            {headerMarkup}
-            <section className={styles.Bottom}>
-              <div className={styles.Overlay}></div>
-              {bottomImagesMarkup}
-            </section>
-          </section>
-        </>
-      )}
+      <Navbar lightTheme={lightTheme} />
+      <section className={styles.LandingPage}>
+        {headerMarkup}
+        <section className={styles.Bottom}>
+          <div className={styles.Overlay}></div>
+          {bottomImagesMarkup}
+        </section>
+      </section>
     </>
   );
 }
