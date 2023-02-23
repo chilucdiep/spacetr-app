@@ -6,6 +6,7 @@ import moment from "moment";
 import { useState } from "react";
 import { SelectOption } from "../../../types/Interfaces";
 import { Select } from "../../Select/Select";
+import Button from "../../Button/Button";
 
 export default function HubbleSelection() {
   // const { picture } = useHubblePicture("January 1 2019");
@@ -41,6 +42,8 @@ export default function HubbleSelection() {
     />
   );
 
+  console.log(daysOptions);
+
   const daySelectComponentMarkup = (
     <Select
       onChange={(option: SelectOption | undefined) => setSelectedDay(option)}
@@ -51,7 +54,7 @@ export default function HubbleSelection() {
   );
 
   return (
-    <section>
+    <section className={styles.HubbleContainer}>
       <h3 className={globals.SectionTitle}>
         What Did Hubble See on Your Birthday?
       </h3>
@@ -59,6 +62,7 @@ export default function HubbleSelection() {
         {monthSelectComponentMarkup}
         {daySelectComponentMarkup}
       </div>
+      <Button label="Submit" fullWidth />
     </section>
   );
 
@@ -70,6 +74,10 @@ export default function HubbleSelection() {
         value: idx + 1,
       }));
     }
-    return [];
+
+    return Array.from({ length: 31 }, (_, idx) => ({
+      label: (idx + 1).toString(),
+      value: idx + 1,
+    }));
   }
 }

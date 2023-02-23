@@ -18,7 +18,11 @@
   .FeedPageLeft {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 2em;
     margin-right: 1em;
+    position: -webkit-sticky;
+    position: sticky;
+    height: 80vh;
+    top: 6.5em;
   }
 }
