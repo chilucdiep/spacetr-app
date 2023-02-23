@@ -17,34 +17,23 @@ export default function App() {
   );
   root.style.setProperty("--text-color", lightTheme ? "black" : "white");
 
+  const landingPage = (
+    <LandingPage lightTheme={lightTheme} setLightTheme={setLightTheme} />
+  );
+  const feedPage = (
+    <FeedPage lightTheme={lightTheme} setLightTheme={setLightTheme} />
+  );
+  const pictureDetailsPage = (
+    <PictureDetailsPage lightTheme={lightTheme} setLightTheme={setLightTheme} />
+  );
+
   return (
     <HashRouter>
       <div className={styles.Container}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <LandingPage
-                lightTheme={lightTheme}
-                setLightTheme={setLightTheme}
-              />
-            }
-          />
-          <Route
-            path="/feed"
-            element={
-              <FeedPage lightTheme={lightTheme} setLightTheme={setLightTheme} />
-            }
-          />
-          <Route
-            path="/feed/:id"
-            element={
-              <PictureDetailsPage
-                lightTheme={lightTheme}
-                setLightTheme={setLightTheme}
-              />
-            }
-          />
+          <Route path="/" element={landingPage} />
+          <Route path="/feed" element={feedPage} />
+          <Route path="/feed/:id" element={pictureDetailsPage} />
           <Route path="*" element={<div>404 Page Not Found</div>} />
         </Routes>
       </div>
