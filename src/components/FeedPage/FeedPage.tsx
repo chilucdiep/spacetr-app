@@ -21,7 +21,7 @@ export default function FeedPage({ lightTheme, setLightTheme }: Theme) {
     >
       <Navbar lightTheme={lightTheme} />
       <section className={styles.FeedPage}>
-        <section>
+        <section className={styles.FeedPageLeft}>
           <HubbleSelection />
           <Liked />
         </section>

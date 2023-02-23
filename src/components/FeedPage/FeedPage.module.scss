@@ -14,4 +14,10 @@
     align-self: center;
     z-index: 1;
   }
+
+  .FeedPageLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
 }

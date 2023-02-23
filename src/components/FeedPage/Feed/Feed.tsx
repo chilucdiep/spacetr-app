@@ -7,6 +7,7 @@ import Card from "./Card/Card";
 import usePictures from "../../../hooks/usePictures";
 import { Picture } from "../../../types/Interfaces";
 import styles from "./Feed.module.scss";
+import globals from "../../../App.module.scss";
 import usePicture from "../../../hooks/usePicture";
 import moment from "moment";
 
@@ -30,7 +31,7 @@ export default function Feed() {
     <div className={styles.OftheDay}>
       {picture ? (
         <>
-          <h3 className={styles.Title}>Astronomy picture of the day</h3>
+          <h3 className={globals.SectionTitle}>Astronomy picture of the day</h3>
           <Card picture={picture} />
         </>
       ) : null}
@@ -39,7 +40,9 @@ export default function Feed() {
 
   const picturesMarkup = pictures ? (
     <div>
-      {picture ? <h3 className={styles.Title}>Our previous pictures</h3> : null}
+      {picture ? (
+        <h3 className={globals.SectionTitle}>Our previous pictures</h3>
+      ) : null}
       <div className={styles.Pictures}>
         {pictures.slice(1).map((picture: Picture, index: number) =>
           pictures.length === index + 2 ? (
