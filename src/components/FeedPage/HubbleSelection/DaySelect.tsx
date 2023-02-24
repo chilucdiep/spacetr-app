@@ -14,7 +14,6 @@ export function DaySelect({
   useEffect(() => {
     if (!selectedMonth) {
       setDaysOptions(generateDayOptions(31));
-      setSelectedDay(undefined);
       return;
     }
 
