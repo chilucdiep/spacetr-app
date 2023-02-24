@@ -19,9 +19,7 @@ export default function HubbleDetailsPage({
     picture?.Name,
     picture?.Caption
   );
-  console.log(loading);
-
-  console.log(personalizedText);
+  // console.log(picture);
 
   const testMarkup = picture ? (
     <div>
