@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Configuration, OpenAIApi } from "openai";
-import { OPENAI_API_KEY } from "./utils";
 
 export default function useHubbleAIPrompt(
   birthDate: string,
@@ -15,7 +14,7 @@ export default function useHubbleAIPrompt(
 
   useEffect(() => {
     const configuration = new Configuration({
-      apiKey: OPENAI_API_KEY,
+      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
 

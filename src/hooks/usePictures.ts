@@ -3,7 +3,7 @@ import axios from "axios";
 import moment from "moment";
 
 import { Picture } from "../types/Interfaces";
-import { APOD_URL, API_KEY } from "./utils";
+import { APOD_URL } from "./utils";
 
 export default function usePictures(count: number) {
   const [pictures, setPictures] = useState<Picture[]>([]);
@@ -21,7 +21,7 @@ export default function usePictures(count: number) {
         .subtract(startCount, "days")
         .format("YYYY-MM-DD");
       const endDate = moment().subtract(endCount, "days").format("YYYY-MM-DD");
-      const url = `${APOD_URL}?api_key=${API_KEY}&start_date=${startDate}&end_date=${endDate}`;
+      const url = `${APOD_URL}?api_key=${process.env.REACT_APP_API_KEY}&start_date=${startDate}&end_date=${endDate}`;
 
       try {
         const response = await axios.get(url);
