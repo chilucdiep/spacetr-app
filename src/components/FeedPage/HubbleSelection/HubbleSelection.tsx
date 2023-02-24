@@ -52,7 +52,7 @@ export default function HubbleSelection() {
 
   function navigateToHubblePicturePage() {
     if (selectedMonth && selectedDay) {
-      navigate(`/hubble/${selectedMonth.label}-${selectedMonth.value}`);
+      navigate(`/hubble/${selectedMonth.label}-${selectedDay.value}`);
     }
   }
 }

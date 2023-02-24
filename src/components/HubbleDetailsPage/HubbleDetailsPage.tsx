@@ -12,6 +12,7 @@ export default function HubbleDetailsPage({
   const pathParts = window.location.href.split("/").pop();
 
   const birthDate = `${pathParts}`.replaceAll("-", " ");
+  console.log(birthDate);
   const { picture } = useHubblePicture(birthDate);
 
   const testMarkup = picture ? (
