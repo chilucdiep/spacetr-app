@@ -27,7 +27,7 @@ export default function useHubbleAIPrompt(
         Image title: [${pictureName}]
         Image caption: [${pictureCaption}]
         
-        Based on this information, can you generate a personalized message for the user? The message should be witty, funny, sassy and friendly, and should incorporate elements of the user's birth date and astrological sign as well as the image title and caption. The message should also be a little bit inspiring and wholesome, but mainly witty and funny.
+        Based on this information, can you generate a personalized message for the user? The message should be witty, funny, sassy and friendly, and should incorporate elements of the user's birth date and astrological sign as well as the image title and caption. The message should also be a little bit inspiring and wholesome, but mainly witty and funny. Include words like slay queen, pur, periodt, pop off, etc.
         `,
         max_tokens: 256,
       });
