@@ -24,5 +24,10 @@
     position: sticky;
     height: 80vh;
     top: 6.5em;
+
+    @media screen and (max-width: 900px) {
+      position: static;
+      height: 30em;
+    }
   }
 }
