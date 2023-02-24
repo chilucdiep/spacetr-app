@@ -44,7 +44,9 @@ export default function HubbleDetailsPage({
     <>
       <Navbar lightTheme={lightTheme} />
       <section className={styles.Header}>
-        <h1>Hey {signName}, Discover Your Birthday's Cosmic Connection!</h1>
+        <h1>
+          Hey Little {signName}, Discover Your Birthday's Cosmic Connection!
+        </h1>
         <h3>
           Explore the cosmos on your special day with Hubble's birthday photos!
           Our AI-generated content is personalized and full of fun references to
