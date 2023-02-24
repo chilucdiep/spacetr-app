@@ -52,7 +52,7 @@ export default function Liked() {
         animate={{ opacity: 1, y: 0, transition: { duration: 0.3 } }}
         exit={{ opacity: 0, y: 15, transition: { duration: 0.3 } }}
       >
-        No picture liked
+        Save your favorite pictures
       </motion.h2>
     ) : (
       likedPicturesMarkup

@@ -3,6 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 export default function useHubbleAIPrompt(
   birthDate: string,
+  signName: string | undefined,
   pictureName: string,
   pictureCaption: string
 ) {
@@ -23,7 +24,7 @@ export default function useHubbleAIPrompt(
       const response = await openai.createCompletion({
         model: "text-davinci-003",
         prompt: `User birth date: [${birthDate}]
-        Astrological sign: [determine astrological sign based on birth date]
+        Astrological sign: ${signName}
         Title of image taken by NASA's Hubble: [${pictureName}]
         Caption of image taken by NASA's Hubble: [${pictureCaption}]
         
