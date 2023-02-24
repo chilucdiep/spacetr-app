@@ -51,6 +51,7 @@ export default function HubbleDetailsPage({
           astrology. Discover your cosmic connection with OpenAI and get ready
           to blast off into the stars!
         </h3>
+        <h6>{signName === "Virgo" ? "Virgos are toxic js" : ""}</h6>
       </section>
       {testMarkup}
     </>
