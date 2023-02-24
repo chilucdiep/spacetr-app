@@ -1,5 +1,3 @@
-// import useHubblePicture from "../../../hooks/useHubblePicture";
-
 import globals from "../../../App.module.scss";
 import styles from "./HubbleSelection.module.scss";
 import moment from "moment";
@@ -8,20 +6,10 @@ import { SelectOption } from "../../../types/Interfaces";
 import { Select } from "../../Select/Select";
 import Button from "../../Button/Button";
 import { DaySelect } from "./DaySelect";
+import { useNavigate } from "react-router-dom";
 
 export default function HubbleSelection() {
-  // const { picture } = useHubblePicture("January 1 2019");
-  //   console.log(picture);
-
-  // const testMarkup = picture ? (
-  //   <div>
-  //     <p>{picture.Name}</p>
-  //     <img
-  //       src={`https://imagine.gsfc.nasa.gov/hst_bday/images/${picture.Image}`}
-  //       alt="Hubble pic"
-  //     />
-  //   </div>
-  // ) : null;
+  const navigate = useNavigate();
 
   const monthsOptions = moment
     .months()
@@ -30,6 +18,7 @@ export default function HubbleSelection() {
   const [selectedMonth, setSelectedMonth] = useState<
     SelectOption | undefined
   >();
+  const [selectedDay, setSelectedDay] = useState<SelectOption | undefined>();
 
   const monthSelectComponentMarkup = (
     <Select
@@ -40,7 +29,13 @@ export default function HubbleSelection() {
     />
   );
 
-  const daySelectComponentMarkup = <DaySelect selectedMonth={selectedMonth} />;
+  const daySelectComponentMarkup = (
+    <DaySelect
+      selectedMonth={selectedMonth}
+      selectedDay={selectedDay}
+      setSelectedDay={setSelectedDay}
+    />
+  );
 
   return (
     <section className={styles.HubbleContainer}>
@@ -51,7 +46,13 @@ export default function HubbleSelection() {
         {monthSelectComponentMarkup}
         {daySelectComponentMarkup}
       </div>
-      <Button label="Submit" fullWidth />
+      <Button label="Submit" fullWidth onClick={navigateToHubblePicturePage} />
     </section>
   );
+
+  function navigateToHubblePicturePage() {
+    if (selectedMonth && selectedDay) {
+      navigate(`/hubble/${selectedMonth.label}-${selectedMonth.value}`);
+    }
+  }
 }

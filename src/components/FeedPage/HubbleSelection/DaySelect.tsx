@@ -3,13 +3,18 @@ import { useEffect, useState } from "react";
 import { SelectOption } from "../../../types/Interfaces";
 import { Select } from "../../Select/Select";
 
+interface DaySelect {
+  selectedMonth: SelectOption | undefined;
+  selectedDay: SelectOption | undefined;
+  setSelectedDay: (option: SelectOption | undefined) => void;
+}
+
 export function DaySelect({
   selectedMonth,
-}: {
-  selectedMonth: SelectOption | undefined;
-}) {
+  selectedDay,
+  setSelectedDay,
+}: DaySelect) {
   const [daysOptions, setDaysOptions] = useState<SelectOption[]>([]);
-  const [selectedDay, setSelectedDay] = useState<SelectOption | undefined>();
 
   useEffect(() => {
     if (!selectedMonth) {
@@ -23,7 +28,7 @@ export function DaySelect({
     if (selectedDay && selectedDay.value > numDays) {
       setSelectedDay(undefined);
     }
-  }, [selectedDay, selectedMonth]);
+  }, [selectedDay, selectedMonth, setSelectedDay]);
 
   return (
     <Select
