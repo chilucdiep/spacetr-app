@@ -11,7 +11,9 @@ export default function useHubblePicture(date: string) {
     fetch(HUBBLE_URL)
       .then((res) => res.text())
       .then((text) =>
-        setPicture(csvToJson(text).filter((pic) => pic.Date === date)[0])
+        setPicture(
+          csvToJson(text).filter((pic) => pic.Date === `${date} 2019`)[0]
+        )
       )
       .catch((err) => {
         setError(err);

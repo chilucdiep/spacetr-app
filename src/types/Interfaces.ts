@@ -10,6 +10,11 @@ export interface Picture {
   liked?: boolean;
 }
 
+export type SelectOption = {
+  label: string;
+  value: string | number;
+};
+
 export interface Theme {
   lightTheme: boolean;
   setLightTheme: any;

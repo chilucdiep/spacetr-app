@@ -3,6 +3,7 @@ import Delete from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
 import { Picture } from "../../../types/Interfaces";
+import globals from "../../../App.module.scss";
 import styles from "./Liked.module.scss";
 import { useContext } from "react";
 import { LikedPictureContext } from "../FeedPage";
@@ -58,9 +59,11 @@ export default function Liked() {
     );
 
   return (
-    <section className={styles.Liked}>
-      <h4>Pictures you've liked</h4>
-      <AnimatePresence>{hasLikedPicturesMarkup}</AnimatePresence>
+    <section>
+      <h3 className={globals.SectionTitle}>Pictures you've liked</h3>
+      <section className={styles.Liked}>
+        <AnimatePresence>{hasLikedPicturesMarkup}</AnimatePresence>
+      </section>
     </section>
   );
 

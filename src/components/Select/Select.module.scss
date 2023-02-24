@@ -1,0 +1,112 @@
+@mixin Box-Styling() {
+  background-color: #141417;
+  border-radius: 8px;
+  font-weight: 300;
+  font-size: 0.8em;
+}
+
+.Container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 1em 10px;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  transition: box-shadow 0.2s ease;
+  cursor: pointer;
+  @include Box-Styling();
+
+  &:focus-visible {
+    box-shadow: rgb(255 255 255) 0px 0px 0px 2px, rgb(34 34 34) 0px 0px 0px 4px;
+  }
+}
+
+.Value {
+  flex-grow: 1;
+  display: flex;
+  gap: 0.4em;
+  max-height: 52px;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+
+.ButtonContainer {
+  display: flex;
+  gap: 0.4em;
+  margin: 4px;
+  align-items: flex-end;
+}
+
+button {
+  background: none;
+  color: inherit;
+  opacity: 0.4;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.Divider {
+  align-self: stretch;
+  width: 1px;
+  background-color: white;
+  opacity: 0.4;
+}
+
+.Caret {
+  border: 0.35em solid transparent;
+  border-top-color: white;
+  opacity: 0.4;
+  translate: 0 20%;
+}
+
+.OptionsList {
+  position: absolute;
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+  display: none;
+  max-height: 15em;
+  overflow-y: auto;
+  width: 100%;
+  left: 0;
+  top: calc(100% + 0.5em);
+  z-index: 1000000000;
+  transition: all 3s ease;
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.OptionsList.ShowOptions {
+  display: block;
+
+  .Container {
+    &:focus-visible {
+      box-shadow: rgb(255 255 255) 0px 0px 0px 2px,
+        rgb(34 34 34) 0px 0px 0px 4px;
+    }
+  }
+}
+
+.Option {
+  cursor: pointer;
+  padding: 1em 10px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+.Option.Selected {
+  background-color: rgba(255, 255, 255, 0.07);
+}

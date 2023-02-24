@@ -1,12 +1,8 @@
 .Liked {
   background-color: #141417;
-  margin-right: 1em;
-  height: 82vh;
+  height: 60vh;
   border-radius: 8px;
-  position: sticky;
-  top: 6.5em;
   display: grid;
-  grid-template-rows: 8% 78%;
   overflow-y: scroll;
 
   @media screen and (max-width: 900px) {
@@ -47,7 +43,6 @@
     align-self: start;
     justify-self: start;
     width: 100%;
-    border-top: 1px solid #333;
 
     .LikedPicture {
       border-bottom: 1px solid #333;

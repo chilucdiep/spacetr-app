@@ -6,6 +6,7 @@ import FeedPage from "./components/FeedPage/FeedPage";
 import PictureDetailsPage from "./components/PictureDetailsPage/PictureDetailsPage";
 
 import styles from "./App.module.scss";
+import HubbleDetailsPage from "./components/HubbleDetailsPage/HubbleDetailsPage";
 
 export default function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);
@@ -26,6 +27,9 @@ export default function App() {
   const pictureDetailsPage = (
     <PictureDetailsPage lightTheme={lightTheme} setLightTheme={setLightTheme} />
   );
+  const hubbleDetailsPage = (
+    <HubbleDetailsPage lightTheme={lightTheme} setLightTheme={setLightTheme} />
+  );
 
   return (
     <HashRouter>
@@ -34,6 +38,7 @@ export default function App() {
           <Route path="/" element={landingPage} />
           <Route path="/feed" element={feedPage} />
           <Route path="/feed/:id" element={pictureDetailsPage} />
+          <Route path="/hubble/:id" element={hubbleDetailsPage} />
           <Route path="*" element={<div>404 Page Not Found</div>} />
         </Routes>
       </div>
