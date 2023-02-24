@@ -24,10 +24,10 @@ export default function useHubbleAIPrompt(
         model: "text-davinci-003",
         prompt: `User birth date: [${birthDate}]
         Astrological sign: [determine astrological sign based on birth date]
-        Image title: [${pictureName}]
-        Image caption: [${pictureCaption}]
+        Title of image taken by NASA's Hubble: [${pictureName}]
+        Caption of image taken by NASA's Hubble: [${pictureCaption}]
         
-        Based on this information, can you generate a personalized message for the user? The message should be witty, funny, sassy and friendly, and should incorporate elements of the user's birth date and astrological sign as well as the image title and caption. The message should also be a little bit inspiring and wholesome, but mainly witty and funny. Include words like slay queen, pur, periodt, pop off, etc.
+        Based on this information, can you generate a personalized message for the user? The message should be witty, funny, sassy and friendly, and should incorporate elements of the user's birth date and astrological sign as well as the title and caption of the image taken by NASA's Hubble. The message should also be a little bit inspiring and wholesome, but mainly witty and funny. Include words like slay queen, periodt, pur (which means periodt) and pop off. Each of those words should not be mentionned more than once. User can be a male of female. Do not use brackets like [User].
         `,
         max_tokens: 256,
       });

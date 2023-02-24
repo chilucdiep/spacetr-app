@@ -9,7 +9,7 @@ export default function usePicture(date: string) {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
 
-  const url = `${APOD_URL}?api_key=${process.env.API_KEY}&date=${date}`;
+  const url = `${APOD_URL}?api_key=${process.env.REACT_APP_API_KEY}&date=${date}`;
 
   useEffect(() => {
     async function fetchData() {
