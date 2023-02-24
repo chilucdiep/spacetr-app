@@ -1,8 +1,9 @@
 import Navbar from "../Navbar/Navbar";
 
 import { Theme } from "../../types/Interfaces";
-import styles from "./PictureDetailsPage.module.scss";
+import styles from "./HubbleDetailsPage.module.scss";
 import useHubblePicture from "../../hooks/useHubblePicture";
+import useHubbleAIPrompt from "../../hooks/useHubbleAIPrompt";
 
 export default function HubbleDetailsPage({
   lightTheme,
@@ -10,16 +11,26 @@ export default function HubbleDetailsPage({
 }: Theme) {
   setLightTheme(true);
   const pathParts = window.location.href.split("/").pop();
-
   const birthDate = `${pathParts}`.replaceAll("-", " ");
-  console.log(birthDate);
   const { picture } = useHubblePicture(birthDate);
+
+  const { personalizedText, loading } = useHubbleAIPrompt(
+    birthDate,
+    picture?.Name,
+    picture?.Caption
+  );
+  console.log(loading);
+
+  console.log(personalizedText);
 
   const testMarkup = picture ? (
     <div>
       <p>{picture.Date}</p>
       <h3>{picture.Name}</h3>
       <p>{picture.Caption}</p>
+      <h4>
+        {loading ? "ChatGPT is cooking, let him cook..." : personalizedText}
+      </h4>
       <img
         src={`https://imagine.gsfc.nasa.gov/hst_bday/images/${picture.Image}`}
         alt="Hubble pic"
