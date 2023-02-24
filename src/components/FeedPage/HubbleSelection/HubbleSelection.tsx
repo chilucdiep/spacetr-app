@@ -7,6 +7,7 @@ import { useState } from "react";
 import { SelectOption } from "../../../types/Interfaces";
 import { Select } from "../../Select/Select";
 import Button from "../../Button/Button";
+import { DaySelect } from "./DaySelect";
 
 export default function HubbleSelection() {
   // const { picture } = useHubblePicture("January 1 2019");
@@ -30,9 +31,6 @@ export default function HubbleSelection() {
     SelectOption | undefined
   >();
 
-  const daysOptions = getDaysinMonths();
-  const [selectedDay, setSelectedDay] = useState<SelectOption | undefined>();
-
   const monthSelectComponentMarkup = (
     <Select
       onChange={(option: SelectOption | undefined) => setSelectedMonth(option)}
@@ -42,16 +40,7 @@ export default function HubbleSelection() {
     />
   );
 
-  console.log(daysOptions);
-
-  const daySelectComponentMarkup = (
-    <Select
-      onChange={(option: SelectOption | undefined) => setSelectedDay(option)}
-      options={daysOptions}
-      placeholder="Select Day"
-      selectedOption={selectedDay}
-    />
-  );
+  const daySelectComponentMarkup = <DaySelect selectedMonth={selectedMonth} />;
 
   return (
     <section className={styles.HubbleContainer}>
@@ -65,19 +54,4 @@ export default function HubbleSelection() {
       <Button label="Submit" fullWidth />
     </section>
   );
-
-  function getDaysinMonths() {
-    if (selectedMonth) {
-      const numDays = moment(`${selectedMonth.value}`, "M").daysInMonth();
-      return Array.from({ length: numDays }, (_, idx) => ({
-        label: (idx + 1).toString(),
-        value: idx + 1,
-      }));
-    }
-
-    return Array.from({ length: 31 }, (_, idx) => ({
-      label: (idx + 1).toString(),
-      value: idx + 1,
-    }));
-  }
 }

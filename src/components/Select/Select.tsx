@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Select.module.scss";
 import { SelectOption } from "../../types/Interfaces";
-import Button from "../Button/Button";
 
 type SelectPropsBase = {
   placeholder: string;
@@ -20,13 +19,11 @@ export function Select({
   selectedOption,
 }: SingleSelectProps) {
   const [isOpen, setisOpen] = useState(false);
-  const [highlightedIndex, sethighlightedIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      sethighlightedIndex(0);
     } else {
       document.body.style.overflow = "unset";
     }
@@ -48,18 +45,16 @@ export function Select({
     </button>
   );
 
-  const optionsMarkup = options.map((option, index) => (
+  const optionsMarkup = options.map((option) => (
     <li
       key={option.value}
       className={`
         ${styles.Option}
         ${isOptionSelected(option) ? styles.Selected : ""}
-        ${index === highlightedIndex ? styles.Highlighted : ""}
       `}
       onClick={() => {
         selectOption(option);
       }}
-      onMouseEnter={() => sethighlightedIndex(index)}
     >
       {option.label}
     </li>
@@ -95,6 +90,6 @@ export function Select({
   }
 
   function isOptionSelected(option: SelectOption) {
-    return option === selectedOption;
+    return option.value === selectedOption?.value;
   }
 }
