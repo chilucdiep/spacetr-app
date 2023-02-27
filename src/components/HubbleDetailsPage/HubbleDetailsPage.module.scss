@@ -14,13 +14,17 @@
 
 .Caption {
   font-size: 1.2rem;
+
+  @media screen and (max-width: 700px) {
+    font-size: 0.8rem;
+  }
 }
 
 .PersonalizedMessage {
   background-color: rgba(255, 255, 255, 0.1);
   padding: 2em 3em;
   border-radius: 8px;
-  height: 14em;
+  min-height: 14em;
   display: grid;
   grid-template-rows: 10% 90%;
   align-items: center;
@@ -37,6 +41,12 @@
     top: 0;
     z-index: 2;
     padding: 2em 3em;
+
+    @media screen and (max-width: 700px) {
+      padding: 0;
+      position: static;
+      margin-bottom: 1em;
+    }
 
     .Date {
       margin-bottom: 2em;
@@ -56,6 +66,10 @@
     );
     border-radius: 8px 8px 0px 0px;
     z-index: 1;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
   }
 
   img {
