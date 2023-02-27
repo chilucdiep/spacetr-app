@@ -10,7 +10,7 @@ export default function HubbleDetailsPage({
   lightTheme,
   setLightTheme,
 }: Theme) {
-  setLightTheme(true);
+  setLightTheme(false);
   const pathParts = window.location.href.split("/").pop();
   const birthDate = `${pathParts}`.replaceAll("-", " ");
   const { picture } = useHubblePicture(birthDate);
@@ -22,14 +22,38 @@ export default function HubbleDetailsPage({
     pictureCaption: picture?.Caption,
   });
 
-  const testMarkup = picture ? (
-    <section>
-      <p>{picture.Date}</p>
-      <h3>{picture.Name}</h3>
-      <p>{picture.Caption}</p>
-      <h4>
+  const headerMarkup = (
+    <section className={styles.Header}>
+      <h5>Hello little {signName},</h5>
+      <h1>Discover Your Birthday's Cosmic Connection!</h1>
+      <h3>
+        Hubble Space Telescope has been capturing awe-inspiring images of the
+        cosmos since its launch in 1990. Our AI-generated message for you is
+        personalized and full of fun references to astrology. So, get ready to
+        blast off into the stars and explore Hubble's birthday photo on your
+        special day!
+      </h3>
+      <h6>{signName === "Virgo" ? "Virgos are toxic btw" : ""}</h6>
+    </section>
+  );
+
+  const personalizedMessage = (
+    <section className={styles.PersonalizedMessage}>
+      <h2>Our personalized words of the day to you</h2>
+      <p className={styles.Caption}>
         {loading ? "ChatGPT is cooking, let him cook..." : personalizedText}
-      </h4>
+      </p>
+    </section>
+  );
+
+  const pictureMarkup = picture ? (
+    <section className={styles.Picture}>
+      <div className={styles.Info}>
+        <h1>{picture.Name}</h1>
+        <p className={styles.Date}>{picture.Date}</p>
+        <p className={styles.Caption}>{picture.Caption}</p>
+      </div>
+      <div className={styles.Overlay}></div>
       <img
         src={`https://imagine.gsfc.nasa.gov/hst_bday/images/${picture.Image}`}
         alt="Hubble pic"
@@ -40,18 +64,9 @@ export default function HubbleDetailsPage({
   return (
     <>
       <Navbar lightTheme={lightTheme} />
-      <section className={styles.Header}>
-        <h5>Hello little {signName},</h5>
-        <h1>Discover Your Birthday's Cosmic Connection!</h1>
-        <h3>
-          Explore the cosmos on your special day with Hubble's birthday photos!
-          Our AI-generated content is personalized and full of fun references to
-          astrology. Discover your cosmic connection with OpenAI and get ready
-          to blast off into the stars!
-        </h3>
-        <h6>{signName === "Virgo" ? "Virgos are toxic js" : ""}</h6>
-      </section>
-      {testMarkup}
+      {headerMarkup}
+      {personalizedMessage}
+      {pictureMarkup}
     </>
   );
 }

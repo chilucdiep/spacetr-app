@@ -19,6 +19,7 @@ export default function HubbleSelection() {
     SelectOption | undefined
   >();
   const [selectedDay, setSelectedDay] = useState<SelectOption | undefined>();
+  const [hasError, setHasError] = useState<boolean>(false);
 
   const monthSelectComponentMarkup = (
     <Select
@@ -37,6 +38,10 @@ export default function HubbleSelection() {
     />
   );
 
+  const errorMarkup = hasError ? (
+    <p className={globals.Error}>Both fields need to be filled</p>
+  ) : null;
+
   return (
     <section className={styles.HubbleContainer}>
       <h3 className={globals.SectionTitle}>
@@ -46,12 +51,19 @@ export default function HubbleSelection() {
         {monthSelectComponentMarkup}
         {daySelectComponentMarkup}
       </div>
+      {errorMarkup}
       <Button label="Submit" fullWidth onClick={navigateToHubblePicturePage} />
     </section>
   );
 
   function navigateToHubblePicturePage() {
+    if (!(selectedMonth && selectedDay)) {
+      setHasError(true);
+      return;
+    }
+
     if (selectedMonth && selectedDay) {
+      setHasError(false);
       navigate(`/hubble/${selectedMonth.label}-${selectedDay.value}`);
     }
   }
