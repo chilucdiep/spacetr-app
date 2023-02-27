@@ -23,7 +23,7 @@ export default function useHubbleAIPrompt({
     async function generate() {
       setLoading(true);
       const response = await axios.post<{ personalizedText: string }>(
-        "http://localhost:3001/api/openai",
+        "http://localhost:3001/api/openai/",
         {
           birthDate,
           signName,
