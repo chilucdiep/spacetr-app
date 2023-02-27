@@ -3,27 +3,24 @@ import Navbar from "../Navbar/Navbar";
 import { Theme } from "../../types/Interfaces";
 import styles from "./HubbleDetailsPage.module.scss";
 import useHubblePicture from "../../hooks/useHubblePicture";
-import useHubbleAIPrompt from "../../hooks/useHubbleAIPrompt";
-import { useEffect, useState } from "react";
 import useAstrologicalSign from "../../hooks/useAstrologicalSign";
+import useHubbleAIPrompt from "../../hooks/useHubbleAIPrompt";
 
 export default function HubbleDetailsPage({
   lightTheme,
   setLightTheme,
 }: Theme) {
   setLightTheme(true);
-  // const [sign, setSign] = useState<string | undefined>(undefined);
   const pathParts = window.location.href.split("/").pop();
   const birthDate = `${pathParts}`.replaceAll("-", " ");
   const { picture } = useHubblePicture(birthDate);
   const { signName } = useAstrologicalSign(birthDate);
-
-  const { personalizedText, loading } = useHubbleAIPrompt(
-    birthDate,
-    signName,
-    picture?.Name,
-    picture?.Caption
-  );
+  const { personalizedText, loading } = useHubbleAIPrompt({
+    birthDate: birthDate,
+    signName: signName,
+    pictureName: picture?.Name,
+    pictureCaption: picture?.Caption,
+  });
 
   const testMarkup = picture ? (
     <section>
@@ -31,7 +28,7 @@ export default function HubbleDetailsPage({
       <h3>{picture.Name}</h3>
       <p>{picture.Caption}</p>
       <h4>
-        {/* {loading ? "ChatGPT is cooking, let him cook..." : personalizedText} */}
+        {loading ? "ChatGPT is cooking, let him cook..." : personalizedText}
       </h4>
       <img
         src={`https://imagine.gsfc.nasa.gov/hst_bday/images/${picture.Image}`}

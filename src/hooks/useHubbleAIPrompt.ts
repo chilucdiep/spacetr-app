@@ -1,44 +1,42 @@
 import { useState, useEffect } from "react";
-import { Configuration, OpenAIApi } from "openai";
+import axios from "axios";
 
-export default function useHubbleAIPrompt(
-  birthDate: string,
-  signName: string | undefined,
-  pictureName: string,
-  pictureCaption: string
-) {
+interface HubbleAIPromptProps {
+  birthDate: string;
+  signName: string | undefined;
+  pictureName: string;
+  pictureCaption: string;
+}
+
+export default function useHubbleAIPrompt({
+  birthDate,
+  signName,
+  pictureName,
+  pictureCaption,
+}: HubbleAIPromptProps) {
   const [personalizedText, setPersonalizedText] = useState<string | undefined>(
     undefined
   );
   const [loading, setLoading] = useState<boolean>(false);
-  // const [error, setError] = useState<any>(null);
 
   useEffect(() => {
-    const configuration = new Configuration({
-      apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-    });
-    const openai = new OpenAIApi(configuration);
-
     async function generate() {
       setLoading(true);
-      const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: `User birth date: [${birthDate}]
-        Astrological sign: ${signName}
-        Title of image taken by NASA's Hubble: [${pictureName}]
-        Caption of image taken by NASA's Hubble: [${pictureCaption}]
-        
-        Based on this information, can you generate a personalized message for the user? The message should be witty, funny, sassy and friendly, and should incorporate elements of the user's birth date and astrological sign as well as the title and caption of the image taken by NASA's Hubble. The message should also be a little bit inspiring and wholesome, but mainly witty and funny. Include words like slay queen, periodt, pur (which means periodt) and pop off. Each of those words should not be mentionned more than once. User can be a male of female. Do not use brackets like [User].
-        `,
-        max_tokens: 256,
-      });
-      await setLoading(false);
-
-      await setPersonalizedText(response.data.choices[0].text);
+      const response = await axios.post<{ personalizedText: string }>(
+        "http://localhost:3001/api/openai",
+        {
+          birthDate,
+          signName,
+          pictureName,
+          pictureCaption,
+        }
+      );
+      setLoading(false);
+      setPersonalizedText(response.data.personalizedText);
     }
 
     generate();
-  }, [birthDate, pictureCaption, pictureName]);
+  }, [birthDate, pictureCaption, pictureName, signName]);
 
   return { personalizedText, loading };
 }
