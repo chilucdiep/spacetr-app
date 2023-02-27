@@ -33,16 +33,20 @@ export default function HubbleDetailsPage({
         blast off into the stars and explore Hubble's birthday photo on your
         special day!
       </h3>
-      <h6>{signName === "Virgo" ? "Virgos are toxic btw" : ""}</h6>
     </section>
   );
 
   const personalizedMessage = (
     <section className={styles.PersonalizedMessage}>
       <h2>Our personalized words of the day to you</h2>
-      <p className={styles.Caption}>
-        {loading ? "ChatGPT is cooking, let him cook..." : personalizedText}
-      </p>
+      <div>
+        <p className={styles.Caption}>
+          {loading ? "ChatGPT is cooking, let him cook..." : personalizedText}
+        </p>
+        <h6>
+          {signName === "Virgo" && !loading ? "Virgos are toxic btw" : ""}
+        </h6>
+      </div>
     </section>
   );
 
