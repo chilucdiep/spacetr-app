@@ -7,8 +7,9 @@ import useAstrologicalSign from "../../hooks/useAstrologicalSign";
 import useHubbleAIPrompt from "../../hooks/useHubbleAIPrompt";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import HubbleSelection from "../FeedPage/HubbleSelection/HubbleSelection";
 
 const headerHello = {
   hidden: { y: 20, opacity: 0 },
@@ -64,6 +65,8 @@ export default function HubbleDetailsPage({
   setLightTheme,
 }: Theme) {
   setLightTheme(false);
+  const { id } = useParams();
+  console.log(id);
   const pathParts = window.location.href.split("/").pop();
   const birthDate = `${pathParts}`.replaceAll("-", " ");
   const { picture } = useHubblePicture(birthDate);
@@ -85,21 +88,24 @@ export default function HubbleDetailsPage({
   );
 
   const headerMarkup = (
-    <section className={styles.Header}>
-      <motion.h5 variants={headerHello} initial="hidden" animate="show">
-        Hello little {signName},
-      </motion.h5>
-      <motion.h1 variants={headerTitle} initial="hidden" animate="show">
-        Discover Your Birthday's{" "}
-        <span className={styles.MagicText}>Cosmic</span> Connection!
-      </motion.h1>
-      <motion.h3 variants={headerCaption} initial="hidden" animate="show">
-        Hubble Space Telescope has been capturing awe-inspiring images of the
-        cosmos since its launch in 1990. Our AI-generated message for you is
-        personalized and full of fun references to astrology. So, get ready to
-        blast off into the stars and explore Hubble's birthday photo on your
-        special day!
-      </motion.h3>
+    <section className={styles.Hero}>
+      <section className={styles.Header}>
+        <motion.h5 variants={headerHello} initial="hidden" animate="show">
+          Hello little {signName},
+        </motion.h5>
+        <motion.h1 variants={headerTitle} initial="hidden" animate="show">
+          Discover Your Birthday's{" "}
+          <span className={styles.MagicText}>Cosmic</span> Connection!
+        </motion.h1>
+        <motion.h3 variants={headerCaption} initial="hidden" animate="show">
+          Hubble Space Telescope has been capturing awe-inspiring images of the
+          cosmos since its launch in 1990. Our AI-generated message for you is
+          personalized and full of fun references to astrology. So, get ready to
+          blast off into the stars and explore Hubble's birthday photo on your
+          special day!
+        </motion.h3>
+      </section>
+      <HubbleSelection />
     </section>
   );
 

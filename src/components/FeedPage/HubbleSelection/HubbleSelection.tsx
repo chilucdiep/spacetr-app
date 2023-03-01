@@ -1,19 +1,32 @@
 import globals from "../../../App.module.scss";
 import styles from "./HubbleSelection.module.scss";
 import moment from "moment";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectOption } from "../../../types/Interfaces";
 import { Select } from "../../Select/Select";
 import Button from "../../Button/Button";
 import { DaySelect } from "./DaySelect";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
+const monthsOptions = moment
+  .months()
+  .map((month, idx) => ({ label: month, value: idx + 1 }));
 
 export default function HubbleSelection() {
   const navigate = useNavigate();
+  const { id } = useParams();
 
-  const monthsOptions = moment
-    .months()
-    .map((month, idx) => ({ label: month, value: idx + 1 }));
+  useEffect(() => {
+    if (id !== undefined) {
+      const [monthFromUrl, dayFromUrl]: any = id.split("-");
+      setSelectedDay({ label: dayFromUrl, value: dayFromUrl });
+
+      const monthFromUrlOption = monthsOptions.filter(
+        (month) => month.label === monthFromUrl
+      );
+      setSelectedMonth(monthFromUrlOption[0]);
+    }
+  }, [id]);
 
   const [selectedMonth, setSelectedMonth] = useState<
     SelectOption | undefined

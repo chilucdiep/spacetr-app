@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
 
 import LandingPage from "./components/LandingPage/LandingPage";
 import FeedPage from "./components/FeedPage/FeedPage";
@@ -32,7 +32,7 @@ export default function App() {
   );
 
   return (
-    <HashRouter>
+    <BrowserRouter>
       <div className={styles.Container}>
         <Routes>
           <Route path="/" element={landingPage} />
@@ -42,6 +42,6 @@ export default function App() {
           <Route path="*" element={<div>404 Page Not Found</div>} />
         </Routes>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
