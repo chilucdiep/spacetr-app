@@ -23,9 +23,22 @@
   white-space: nowrap;
 }
 
+.BackButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.6;
+  width: 65px;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .Header {
   max-width: 900px;
-  margin: 3em 0 5em;
+  margin: 3.5em 0 5em;
 
   h1 {
     line-height: 1.2;

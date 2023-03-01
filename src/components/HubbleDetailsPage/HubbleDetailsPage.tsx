@@ -7,6 +7,8 @@ import useAstrologicalSign from "../../hooks/useAstrologicalSign";
 import useHubbleAIPrompt from "../../hooks/useHubbleAIPrompt";
 import { motion } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import { Link } from "react-router-dom";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const headerHello = {
   hidden: { y: 20, opacity: 0 },
@@ -72,6 +74,15 @@ export default function HubbleDetailsPage({
     pictureName: picture?.Name,
     pictureCaption: picture?.Caption,
   });
+
+  const backToFeedLinkMarkup = (
+    <Link to="/feed">
+      <div className={styles.BackButton}>
+        <ArrowBackIosNewIcon fontSize="small" />
+        <h3>Feed</h3>
+      </div>
+    </Link>
+  );
 
   const headerMarkup = (
     <section className={styles.Header}>
@@ -153,6 +164,7 @@ export default function HubbleDetailsPage({
   return (
     <>
       <Navbar lightTheme={lightTheme} />
+      {backToFeedLinkMarkup}
       {headerMarkup}
       {personalizedMessage}
       {pictureMarkup}
