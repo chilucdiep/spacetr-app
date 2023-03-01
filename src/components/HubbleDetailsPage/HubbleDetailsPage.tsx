@@ -79,7 +79,8 @@ export default function HubbleDetailsPage({
         Hello little {signName},
       </motion.h5>
       <motion.h1 variants={headerTitle} initial="hidden" animate="show">
-        Discover Your Birthday's Cosmic Connection!
+        Discover Your Birthday's{" "}
+        <span className={styles.MagicText}>Cosmic</span> Connection!
       </motion.h1>
       <motion.h3 variants={headerCaption} initial="hidden" animate="show">
         Hubble Space Telescope has been capturing awe-inspiring images of the
