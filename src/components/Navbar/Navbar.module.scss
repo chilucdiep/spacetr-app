@@ -10,10 +10,10 @@
   z-index: 5;
 
   .Logo {
-    max-width: 200px;
+    width: 130px;
 
     @media screen and (max-width: 700px) {
-      max-width: 100px;
+      width: 100px;
     }
   }
 
