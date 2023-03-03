@@ -100,7 +100,7 @@ export default function HubbleDetailsPage({
         <motion.h3 variants={headerCaption} initial="hidden" animate="show">
           Hubble Space Telescope has been capturing awe-inspiring images of the
           cosmos since its launch in 1990. Our AI-generated message for you is
-          personalized and full of fun references to astrology. So, get ready to
+          personalized and full of fun references to astrology. So get ready to
           blast off into the stars and explore Hubble's birthday photo on your
           special day!
         </motion.h3>
