@@ -169,7 +169,7 @@ function PersonalizedMessage({
           {loading ? (
             <Typewriter
               options={{
-                strings: ["", "Loading...", "Let him cook."],
+                strings: ["", "Loading message...", "Let it cook."],
                 autoStart: true,
                 cursor: "",
                 loop: true,
