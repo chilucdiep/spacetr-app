@@ -10,6 +10,7 @@ import Typewriter from "typewriter-effect";
 import { Link, useParams } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import HubbleSelection from "../FeedPage/HubbleSelection/HubbleSelection";
+import { memo } from "react";
 
 const headerHello = {
   hidden: { y: 20, opacity: 0 },
@@ -60,6 +61,8 @@ const messageBox = {
   },
 };
 
+const MemoizedPersonalizedMessage = memo(PersonalizedMessage);
+
 export default function HubbleDetailsPage({
   lightTheme,
   setLightTheme,
@@ -69,14 +72,10 @@ export default function HubbleDetailsPage({
   console.log(id);
   const pathParts = window.location.href.split("/").pop();
   const birthDate = `${pathParts}`.replaceAll("-", " ");
-  const { picture } = useHubblePicture(birthDate);
+  const { picture, loading } = useHubblePicture(birthDate);
   const { signName } = useAstrologicalSign(birthDate);
-  const { personalizedText, loading } = useHubbleAIPrompt({
-    birthDate: birthDate,
-    signName: signName,
-    pictureName: picture?.Name,
-    pictureCaption: picture?.Caption,
-  });
+
+  if (loading) return <div>...Loading</div>;
 
   const backToFeedLinkMarkup = (
     <Link to="/feed">
@@ -109,44 +108,6 @@ export default function HubbleDetailsPage({
     </section>
   );
 
-  const personalizedMessage = (
-    <motion.section
-      className={styles.PersonalizedMessage}
-      variants={messageBox}
-      initial="hidden"
-      animate="show"
-    >
-      <h2>Our personalized words of the day to you</h2>
-      <div>
-        <p className={styles.Caption}>
-          {loading ? (
-            <Typewriter
-              options={{
-                strings: ["", "ChatGPT is cooking...", "Let him cook."],
-                autoStart: true,
-                loop: true,
-                delay: 40,
-                deleteSpeed: 30,
-              }}
-            />
-          ) : (
-            <Typewriter
-              options={{
-                strings: [personalizedText ? personalizedText : ""],
-                autoStart: true,
-                delay: 40,
-                deleteSpeed: 30,
-              }}
-            />
-          )}
-        </p>
-        <h6>
-          {signName === "Virgo" && !loading ? "Virgos are toxic btw" : ""}
-        </h6>
-      </div>
-    </motion.section>
-  );
-
   const pictureMarkup = picture ? (
     <motion.section
       className={styles.Picture}
@@ -172,8 +133,62 @@ export default function HubbleDetailsPage({
       <Navbar lightTheme={lightTheme} />
       {backToFeedLinkMarkup}
       {headerMarkup}
-      {personalizedMessage}
+      <MemoizedPersonalizedMessage
+        birthDate={birthDate}
+        signName={signName}
+        pictureName={picture?.Name}
+        pictureCaption={picture?.Caption}
+      />
       {pictureMarkup}
     </>
+  );
+}
+
+function PersonalizedMessage({
+  birthDate,
+  signName,
+  pictureName,
+  pictureCaption,
+}: any) {
+  const { personalizedText, loading } = useHubbleAIPrompt({
+    birthDate,
+    signName,
+    pictureName,
+    pictureCaption,
+  });
+  return (
+    <motion.section
+      className={styles.PersonalizedMessage}
+      variants={messageBox}
+      initial="hidden"
+      animate="show"
+    >
+      <h2>Our personalized words of the day to you</h2>
+      <div>
+        <p className={styles.Caption}>
+          {loading ? (
+            <Typewriter
+              options={{
+                strings: ["", "Loading...", "Let him cook."],
+                autoStart: true,
+                cursor: "",
+                loop: true,
+                delay: 20,
+                deleteSpeed: 20,
+              }}
+            />
+          ) : (
+            <Typewriter
+              options={{
+                strings: personalizedText,
+                autoStart: true,
+                cursor: "",
+                delay: 20,
+              }}
+            />
+          )}
+        </p>
+      </div>
+    </motion.section>
   );
 }

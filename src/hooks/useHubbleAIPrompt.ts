@@ -20,19 +20,23 @@ export default function useHubbleAIPrompt({
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    setLoading(true);
+
     async function generate() {
-      setLoading(true);
-      const response = await axios.post<{ personalizedText: string }>(
-        "https://space-be.vercel.app/api/openai/",
-        {
+      try {
+        const apiUrl = process.env.REACT_APP_SPACETR_BE_API || "";
+        const response = await axios.post(apiUrl, {
           birthDate,
           signName,
           pictureName,
           pictureCaption,
-        }
-      );
-      setLoading(false);
-      setPersonalizedText(response.data.personalizedText);
+        });
+        setPersonalizedText(response.data.personalizedText.message.content);
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
     }
 
     generate();

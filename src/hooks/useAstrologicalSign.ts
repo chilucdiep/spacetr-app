@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-
 export default function useAstrologicalSign(date: string) {
-  const [signName, setSignName] = useState<string | undefined>(undefined);
   const [month, day] = date.split(" ");
   const monthIndex = new Date(`${month} 1`).getMonth();
   const dayInt = parseInt(day, 10);
@@ -43,9 +40,5 @@ export default function useAstrologicalSign(date: string) {
     return sameMonth && sameDay;
   });
 
-  useEffect(() => {
-    setSignName(sign?.name);
-  }, [sign]);
-
-  return { signName };
+  return { signName: sign?.name };
 }
