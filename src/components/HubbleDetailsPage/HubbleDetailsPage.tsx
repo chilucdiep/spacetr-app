@@ -163,13 +163,13 @@ function PersonalizedMessage({
       initial="hidden"
       animate="show"
     >
-      <h2>Our personalized words of the day to you</h2>
+      <h2>Our personalized words to you</h2>
       <div>
         <p className={styles.Caption}>
           {loading ? (
             <Typewriter
               options={{
-                strings: ["", "Loading message...", "Let it cook."],
+                strings: ["", "Loading message...", "Let us cook."],
                 autoStart: true,
                 cursor: "",
                 loop: true,
