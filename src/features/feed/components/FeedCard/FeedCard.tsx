@@ -5,17 +5,17 @@ import Checkbox from "@material-ui/core/Checkbox";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-import { Picture } from "../../../../types/Interfaces";
-import styles from "./Card.module.scss";
+import { Picture } from "../../../../types/Picture";
+import styles from "./FeedCard.module.scss";
 import { useContext } from "react";
-import { LikedPictureContext } from "../../FeedPage";
 import { motion } from "framer-motion";
+import { LikedPictureContext } from "../../pages/FeedPage";
 
 interface CardProps {
   picture: Picture;
 }
 
-function Card({ picture }: CardProps) {
+function FeedCard({ picture }: CardProps) {
   const [likedPictures, setLikedPictures] = useContext(LikedPictureContext);
 
   const isLiked = likedPictures?.some(
@@ -83,4 +83,4 @@ function Card({ picture }: CardProps) {
   }
 }
 
-export default Card;
+export default FeedCard;

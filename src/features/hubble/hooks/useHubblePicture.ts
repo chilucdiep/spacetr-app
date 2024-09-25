@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { HUBBLE_URL } from "./utils";
+import { HUBBLE_URL } from "../../../hooks/utils";
 
 type ImageData = {
   [key: string]: string | number;

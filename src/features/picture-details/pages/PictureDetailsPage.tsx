@@ -1,21 +1,13 @@
 import { Link } from "react-router-dom";
 
-import Navbar from "../Navbar/Navbar";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-import usePicture from "../../hooks/usePicture";
-import { Theme } from "../../types/Interfaces";
 import styles from "./PictureDetailsPage.module.scss";
 import { motion } from "framer-motion";
-
-const contentVariant = {
-  hidden: { y: 80, opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.3 },
-  },
-};
+import usePicture from "../../../hooks/usePicture";
+import Navbar from "../../../components/Navbar/Navbar";
+import { contentVariant } from "../utils/picture-details-anim";
+import { Theme } from "../../../types/Theme";
 
 export default function PictureDetailsPage({
   lightTheme,

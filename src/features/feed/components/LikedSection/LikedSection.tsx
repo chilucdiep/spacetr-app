@@ -2,13 +2,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import Delete from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
-import { Picture } from "../../../types/Interfaces";
-import globals from "../../../App.module.scss";
-import styles from "./Liked.module.scss";
+import globals from "../../../../App.module.scss";
+import styles from "./LikedSection.module.scss";
 import { useContext } from "react";
-import { LikedPictureContext } from "../FeedPage";
+import { LikedPictureContext } from "../../pages/FeedPage";
+import { Picture } from "../../../../types/Picture";
 
-export default function Liked() {
+export default function LikedSection() {
   const [likedPictures, setLikedPictures] = useContext(LikedPictureContext);
 
   const likedPicturesMarkup = likedPictures ? (

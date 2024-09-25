@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { TailSpin } from "react-loader-spinner";
 
-import Card from "./Card/Card";
+import FeedCard from "../FeedCard/FeedCard";
 
-import usePictures from "../../../hooks/usePictures";
-import { Picture } from "../../../types/Interfaces";
+import usePictures from "../../../../hooks/usePictures";
+import { Picture } from "../../../../types/Picture";
 import styles from "./Feed.module.scss";
-import globals from "../../../App.module.scss";
-import usePicture from "../../../hooks/usePicture";
+import globals from "../../../../App.module.scss";
+import usePicture from "../../../../hooks/usePicture";
 import moment from "moment";
 
 export default function Feed() {
@@ -32,7 +32,7 @@ export default function Feed() {
       {picture ? (
         <>
           <h3 className={globals.SectionTitle}>Astronomy picture of the day</h3>
-          <Card picture={picture} />
+          <FeedCard picture={picture} />
         </>
       ) : null}
     </div>
@@ -47,10 +47,10 @@ export default function Feed() {
         {pictures.slice(1).map((picture: Picture, index: number) =>
           pictures.length === index + 2 ? (
             <div ref={ref} key={picture.date}>
-              <Card picture={picture} />
+              <FeedCard picture={picture} />
             </div>
           ) : (
-            <Card picture={picture} key={picture.date} />
+            <FeedCard picture={picture} key={picture.date} />
           )
         )}
       </div>

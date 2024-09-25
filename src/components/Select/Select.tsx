@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./Select.module.scss";
-import { SelectOption } from "../../types/Interfaces";
+import { SelectOption } from "../../types/SelectOption";
 
 type SelectPropsBase = {
   placeholder: string;

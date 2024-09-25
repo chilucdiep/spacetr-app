@@ -1,12 +1,13 @@
-import globals from "../../../App.module.scss";
+import globals from "../../App.module.scss";
 import styles from "./HubbleSelection.module.scss";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { SelectOption } from "../../../types/Interfaces";
-import { Select } from "../../Select/Select";
-import Button from "../../Button/Button";
+
 import { DaySelect } from "./DaySelect";
 import { useNavigate, useParams } from "react-router-dom";
+import { Select } from "../Select/Select";
+import Button from "../Button/Button";
+import { SelectOption } from "../../types/SelectOption";
 
 const monthsOptions = moment
   .months()

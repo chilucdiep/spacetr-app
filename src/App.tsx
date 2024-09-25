@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { Routes, Route, HashRouter, BrowserRouter } from "react-router-dom";
-
-import LandingPage from "./components/LandingPage/LandingPage";
-import FeedPage from "./components/FeedPage/FeedPage";
-import PictureDetailsPage from "./components/PictureDetailsPage/PictureDetailsPage";
-
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import styles from "./App.module.scss";
-import HubbleDetailsPage from "./components/HubbleDetailsPage/HubbleDetailsPage";
+import HubbleDetailsPage from "./features/hubble/pages/HubbleDetailsPage";
+import LandingPage from "./features/home/pages/LandingPage";
+import FeedPage from "./features/feed/pages/FeedPage";
+import PictureDetailsPage from "./features/picture-details/pages/PictureDetailsPage";
 
 export default function App() {
   const [lightTheme, setLightTheme] = useState<boolean>(false);

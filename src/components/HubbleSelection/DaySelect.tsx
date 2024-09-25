@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { SelectOption } from "../../../types/Interfaces";
-import { Select } from "../../Select/Select";
+import { Select } from "../Select/Select";
+import { SelectOption } from "../../types/SelectOption";
 
 interface DaySelect {
   selectedMonth: SelectOption | undefined;
@@ -25,7 +25,7 @@ export function DaySelect({
     const numDays = getDaysInMonth(selectedMonth.value);
     setDaysOptions(generateDayOptions(numDays));
 
-    if (selectedDay && selectedDay.value > numDays) {
+    if (selectedDay && Number(selectedDay.value) > numDays) {
       setSelectedDay(undefined);
     }
   }, [selectedDay, selectedMonth, setSelectedDay]);

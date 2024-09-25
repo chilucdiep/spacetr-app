@@ -1,4 +1,4 @@
-export interface Picture {
+export type Picture = {
   date: string;
   explanation: string;
   hdurl: string;
@@ -8,14 +8,4 @@ export interface Picture {
   url: string;
   copyright?: string;
   liked?: boolean;
-}
-
-export type SelectOption = {
-  label: string;
-  value: string | number;
 };
-
-export interface Theme {
-  lightTheme: boolean;
-  setLightTheme: any;
-}

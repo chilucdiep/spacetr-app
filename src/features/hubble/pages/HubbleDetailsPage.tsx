@@ -1,65 +1,20 @@
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../../components/Navbar/Navbar";
 
-import { Theme } from "../../types/Interfaces";
 import styles from "./HubbleDetailsPage.module.scss";
-import useHubblePicture from "../../hooks/useHubblePicture";
-import useAstrologicalSign from "../../hooks/useAstrologicalSign";
-import useHubbleAIPrompt from "../../hooks/useHubbleAIPrompt";
+import useHubblePicture from "../hooks/useHubblePicture";
+import useAstrologicalSign from "../hooks/useAstrologicalSign";
 import { motion } from "framer-motion";
-import Typewriter from "typewriter-effect";
 import { Link, useParams } from "react-router-dom";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import HubbleSelection from "../FeedPage/HubbleSelection/HubbleSelection";
 import { memo } from "react";
-
-const headerHello = {
-  hidden: { y: 20, opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-    },
-  },
-};
-
-const headerTitle = {
-  hidden: { y: 20, opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      delay: 0.2,
-    },
-  },
-};
-
-const headerCaption = {
-  hidden: { y: 20, opacity: 0 },
-  show: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      delay: 0.4,
-    },
-  },
-};
-
-const messageBox = {
-  hidden: { x: 120, y: 120, scale: 0.3, opacity: 0 },
-  show: {
-    scale: 1,
-    x: 0,
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.4,
-      delay: 1,
-    },
-  },
-};
+import HubbleSelection from "../../../components/HubbleSelection/HubbleSelection";
+import {
+  headerHello,
+  headerTitle,
+  headerCaption,
+} from "../utils/hubble-page-anim";
+import PersonalizedMessage from "../components/PersonalizedMessage/PersonalizedMessage";
+import { Theme } from "../../../types/Theme";
 
 const MemoizedPersonalizedMessage = memo(PersonalizedMessage);
 
@@ -141,54 +96,5 @@ export default function HubbleDetailsPage({
       />
       {pictureMarkup}
     </>
-  );
-}
-
-function PersonalizedMessage({
-  birthDate,
-  signName,
-  pictureName,
-  pictureCaption,
-}: any) {
-  const { personalizedText, loading } = useHubbleAIPrompt({
-    birthDate,
-    signName,
-    pictureName,
-    pictureCaption,
-  });
-  return (
-    <motion.section
-      className={styles.PersonalizedMessage}
-      variants={messageBox}
-      initial="hidden"
-      animate="show"
-    >
-      <h2>Our personalized words to you</h2>
-      <div>
-        <p className={styles.Caption}>
-          {loading ? (
-            <Typewriter
-              options={{
-                strings: ["", "Loading message...", "Let us cook."],
-                autoStart: true,
-                cursor: "",
-                loop: true,
-                delay: 20,
-                deleteSpeed: 20,
-              }}
-            />
-          ) : (
-            <Typewriter
-              options={{
-                strings: personalizedText,
-                autoStart: true,
-                cursor: "",
-                delay: 20,
-              }}
-            />
-          )}
-        </p>
-      </div>
-    </motion.section>
   );
 }

@@ -1,47 +1,18 @@
 import { Link } from "react-router-dom";
 
-import Navbar from "../Navbar/Navbar";
-import Button from "../Button/Button";
-
-import usePictures from "../../hooks/usePictures";
-import { Picture, Theme } from "../../types/Interfaces";
 import styles from "./LandingPage.module.scss";
 import { motion } from "framer-motion";
-import LoadingPage from "../LoadingPage/LoadingPage";
-
-const containerVariant = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      delay: 0.1,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const listItemVariant = {
-  hidden: { y: 250, opacity: 0 },
-  show: {
-    y: 10,
-    opacity: 1,
-    transition: {
-      duration: 0.9,
-    },
-  },
-};
-
-const textVariant = {
-  hidden: { y: 20, x: 10, opacity: 0 },
-  show: {
-    y: 0,
-    x: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-    },
-  },
-};
+import {
+  containerVariant,
+  listItemVariant,
+  textVariant,
+} from "../utils/landing-page-anim";
+import Button from "../../../components/Button/Button";
+import Navbar from "../../../components/Navbar/Navbar";
+import { Picture } from "../../../types/Picture";
+import usePictures from "../../../hooks/usePictures";
+import LoadingPage from "../components/LoadingPage/LoadingPage";
+import { Theme } from "../../../types/Theme";
 
 export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
   setLightTheme(false);

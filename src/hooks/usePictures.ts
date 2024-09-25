@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
 
-import { Picture } from "../types/Interfaces";
+import { Picture } from "../types/Picture";
 import { APOD_URL } from "./utils";
 
 export default function usePictures(count: number) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { screen, fireEvent } from "@testing-library/react";
-import Card from "./Card";
+import Card from "./FeedCard";
 import {renderWithWrapper} from '../../../../util/test'
 
 const mockPicture = {date: "somedat",explanation: "exp", hdurl: "",media_type: "",service_version: "",title: "title",url: "",copyright: "cp" };
