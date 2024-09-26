@@ -4,18 +4,19 @@ import axios from "axios";
 import { Picture } from "../types/Picture";
 import { APOD_URL } from "./utils";
 
-export default function usePicture(date: string) {
+export default function usePicture(date: string | undefined) {
   const [picture, setPicture] = useState<Picture | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<any>(null);
 
-  const url = `${APOD_URL}?api_key=${process.env.REACT_APP_API_KEY}&date=${date}`;
-
   useEffect(() => {
+    if (!date) return;
+
     async function fetchData() {
       setLoading(true);
 
       try {
+        const url = `${APOD_URL}?api_key=${process.env.REACT_APP_API_KEY}&date=${date}`;
         const response = await axios.get(url);
         setPicture(response.data);
       } catch (err) {
@@ -24,8 +25,9 @@ export default function usePicture(date: string) {
         setLoading(false);
       }
     }
+
     fetchData();
-  }, [url]);
+  }, [date]);
 
   return { picture, loading, error };
 }

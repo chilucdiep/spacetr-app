@@ -12,20 +12,21 @@ import {
   headerHello,
   headerTitle,
   headerCaption,
+  messageBox,
 } from "../utils/hubble-page-anim";
 import PersonalizedMessage from "../components/PersonalizedMessage/PersonalizedMessage";
 import { useTheme } from "../../../ThemeContext";
+import HubblePicture from "../components/HubblePicture/HubblePicture";
 
 const MemoizedPersonalizedMessage = memo(PersonalizedMessage);
 
 export default function HubbleDetailsPage() {
   const { lightTheme, setLightTheme } = useTheme();
   setLightTheme(false);
+
   const { id } = useParams();
-  console.log(id);
-  const pathParts = window.location.href.split("/").pop();
-  const birthDate = `${pathParts}`.replaceAll("-", " ");
-  const { picture, loading } = useHubblePicture(birthDate);
+  const birthDate = id ? id.replaceAll("-", " ") : "";
+  const { picture, loading, error } = useHubblePicture(birthDate);
   const { signName } = useAstrologicalSign(birthDate);
 
   if (loading) return <div>...Loading</div>;
@@ -61,38 +62,30 @@ export default function HubbleDetailsPage() {
     </section>
   );
 
-  const pictureMarkup = picture ? (
-    <motion.section
-      className={styles.Picture}
-      variants={headerHello}
-      initial="hidden"
-      animate="show"
-    >
-      <div className={styles.Info}>
-        <h1>{picture.Name}</h1>
-        <p className={styles.Date}>{picture.Date}</p>
-        <p className={styles.Caption}>{picture.Caption}</p>
-      </div>
-      <div className={styles.Overlay}></div>
-      <img
-        src={`https://imagine.gsfc.nasa.gov/hst_bday/images/${picture.Image}`}
-        alt="Hubble pic"
-      />
-    </motion.section>
-  ) : null;
-
   return (
     <>
       <Navbar lightTheme={lightTheme} />
       {backToFeedLinkMarkup}
       {headerMarkup}
-      <MemoizedPersonalizedMessage
-        birthDate={birthDate}
-        signName={signName}
-        pictureName={picture?.Name}
-        pictureCaption={picture?.Caption}
-      />
-      {pictureMarkup}
+      <motion.section
+        className={styles.PersonalizedMessage}
+        variants={messageBox}
+        initial="hidden"
+        animate="show"
+      >
+        <div>
+          <p className={styles.Caption}>
+            <h2>Our personalized words to you</h2>
+            <MemoizedPersonalizedMessage
+              birthDate={birthDate}
+              signName={signName}
+              pictureName={picture?.Name}
+              pictureCaption={picture?.Caption}
+            />
+          </p>
+        </div>
+      </motion.section>
+      <HubblePicture picture={picture} error={error} />
     </>
   );
 }
