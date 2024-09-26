@@ -1,4 +1,4 @@
 export type Theme = {
   lightTheme: boolean;
-  setLightTheme: any;
+  setLightTheme: React.Dispatch<React.SetStateAction<boolean>>;
 };

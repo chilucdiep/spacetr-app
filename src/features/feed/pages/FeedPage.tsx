@@ -6,13 +6,14 @@ import Navbar from "../../../components/Navbar/Navbar";
 import Liked from "../components/LikedSection/LikedSection";
 import Feed from "../components/Feed/Feed";
 import HubbleSelection from "../../../components/HubbleSelection/HubbleSelection";
-import { Theme } from "../../../types/Theme";
+import { useTheme } from "../../../ThemeContext";
 
 export const LikedPictureContext = createContext<
   [Picture[], Dispatch<SetStateAction<Picture[]>>]
 >([[], () => {}]);
 
-export default function FeedPage({ lightTheme, setLightTheme }: Theme) {
+export default function FeedPage() {
+  const { lightTheme, setLightTheme } = useTheme();
   setLightTheme(false);
 
   return (

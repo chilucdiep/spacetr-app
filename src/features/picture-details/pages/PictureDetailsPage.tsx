@@ -7,12 +7,10 @@ import { motion } from "framer-motion";
 import usePicture from "../../../hooks/usePicture";
 import Navbar from "../../../components/Navbar/Navbar";
 import { contentVariant } from "../utils/picture-details-anim";
-import { Theme } from "../../../types/Theme";
+import { useTheme } from "../../../ThemeContext";
 
-export default function PictureDetailsPage({
-  lightTheme,
-  setLightTheme,
-}: Theme) {
+export default function PictureDetailsPage() {
+  const { lightTheme, setLightTheme } = useTheme();
   setLightTheme(true);
 
   const currentDate = `${String(window.location.href).split("/").pop()}`;

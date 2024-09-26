@@ -14,14 +14,12 @@ import {
   headerCaption,
 } from "../utils/hubble-page-anim";
 import PersonalizedMessage from "../components/PersonalizedMessage/PersonalizedMessage";
-import { Theme } from "../../../types/Theme";
+import { useTheme } from "../../../ThemeContext";
 
 const MemoizedPersonalizedMessage = memo(PersonalizedMessage);
 
-export default function HubbleDetailsPage({
-  lightTheme,
-  setLightTheme,
-}: Theme) {
+export default function HubbleDetailsPage() {
+  const { lightTheme, setLightTheme } = useTheme();
   setLightTheme(false);
   const { id } = useParams();
   console.log(id);

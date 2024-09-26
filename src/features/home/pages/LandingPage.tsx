@@ -12,11 +12,14 @@ import Navbar from "../../../components/Navbar/Navbar";
 import { Picture } from "../../../types/Picture";
 import usePictures from "../../../hooks/usePictures";
 import LoadingPage from "../components/LoadingPage/LoadingPage";
-import { Theme } from "../../../types/Theme";
+import { useTheme } from "../../../ThemeContext";
 
-export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
+export default function LandingPage() {
+  const { lightTheme, setLightTheme } = useTheme();
   setLightTheme(false);
   const { pictures, loading } = usePictures(5);
+
+  if (loading) return <LoadingPage />;
 
   const headerMarkup = (
     <section className={styles.Header}>
@@ -55,8 +58,6 @@ export default function LandingPage({ lightTheme, setLightTheme }: Theme) {
       ))}
     </motion.div>
   ) : null;
-
-  if (loading) return <LoadingPage />;
 
   return (
     <>
